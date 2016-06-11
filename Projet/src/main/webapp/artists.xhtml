@@ -15,9 +15,8 @@
 			<br></br>
 			<h:panelGrid columns="2">
 				<h:outputText value="Artist name : "></h:outputText>
-				<h:selectOneMenu value="#{transferBean.sourceClientName}"
-					valueChangeListener="#{transferBean.updateSourceAccounts}"
-					onchange="submit()">
+				<h:selectOneMenu value="#{transferBean.artistName}">
+					<f:selectItems value="#{transferBean.artistNames}"/>
 				</h:selectOneMenu>
 			</h:panelGrid>
 			<br></br>
