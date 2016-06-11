@@ -21,7 +21,7 @@ import ch.hevs.musicservice.MusicInterface;
 
 public class TransferBean
 {
-	private List<Artist> artists;
+	private List<Artist> artistsList;
 	private List<String> artistNames;
 	private String artistName;
 	/*
@@ -45,9 +45,9 @@ public class TransferBean
 		music = (MusicInterface) ctx.lookup("java:global/projet-0.0.1-SNAPSHOT/MusicBean!ch.hevs.musicservice.MusicInterface");    	
 		                                  
 		// get artists
-		List<Artist> artistList = music.getArtists();
+		artistsList = music.getArtists();
 		this.artistNames = new ArrayList<String>();
-		for (Artist artist : artistList) {
+		for (Artist artist : artistsList) {
 			String lastname = artist.getLastname();
 			if (lastname == null)
 				lastname = "";
@@ -75,7 +75,7 @@ public class TransferBean
 	}
 
 	public List<Artist> getArtists() {
-		return artists;
+		return artistsList;
 	}
 
 	public List<String> getArtistNames() {
