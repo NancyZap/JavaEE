@@ -48,7 +48,10 @@ public class TransferBean
 		List<Artist> artistList = music.getArtists();
 		this.artistNames = new ArrayList<String>();
 		for (Artist artist : artistList) {
-			this.artistNames.add(artist.getName());
+			String lastname = artist.getLastname();
+			if (lastname == null)
+				lastname = "";
+			this.artistNames.add(artist.getName() + " " + lastname);
 		}
 		
 		/*
