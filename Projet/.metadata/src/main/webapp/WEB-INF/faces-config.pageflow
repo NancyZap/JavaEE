@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/TP12-WEB-EJB-PC-EPC-E-solution/src/main/webapp/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Projet/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="transferForm.xhtml" x="122" y="178" id="pf14656382650340" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14656382650351" path="/transferForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showTransferResult.xhtml" x="338" y="178" id="pf14656382650352" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14656382650351" path="/showTransferResult.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="168" y="384" id="pf14656382650353" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14656382650354" path="/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="artists.xhtml" x="384" y="384" id="pf14656382650355" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14656382650354" path="/artists.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="albums.xhtml" x="584" y="401" id="pf14656382650356" path="/albums.xhtml"/>
+  <links id="pf14656382650351" target="pf14656382650352" source="pf14656382650340" outcome="#{transferBean.performTransfer}"/>
+  <links id="pf14656382650354" target="pf14656382650355" source="pf14656382650353" outcome="lookArtist"/>
+</pageflow:Pageflow>
