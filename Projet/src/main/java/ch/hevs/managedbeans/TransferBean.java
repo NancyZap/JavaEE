@@ -50,8 +50,6 @@ public class TransferBean
 		for (Artist artist : artistList) {
 			this.artistNames.add(artist.getName());
 		}
-
-
 		
 		/*
 		// initialize account descriptions

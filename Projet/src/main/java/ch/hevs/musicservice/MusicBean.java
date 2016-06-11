@@ -5,9 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ch.hevs.businessobject.Artist;
 
@@ -16,11 +20,14 @@ public class MusicBean implements MusicInterface {
 	
 	@Resource
 	private SessionContext ctx;
-	@PersistenceContext(name = "musicPU", type = PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "test", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 
 	@Override
 	public List<Artist> getArtists() {
-		return em.createQuery("FROM Artist").getResultList();
+		TypedQuery query = em.createQuery("SELECT a FROM Artist a", Artist.class);
+		List<Artist> list = query.getResultList();
+		return list;
 	}
+	
 }
