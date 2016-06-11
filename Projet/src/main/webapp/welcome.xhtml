@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center">
+			<h:outputLabel value="Welcome to your music database"></h:outputLabel>
+		</h1>
+		<p></p>
+		<h3 class="text-center"><h:outputLabel
+			value="Here you can manage your music collection by consulting all your artists"></h:outputLabel></h3>
+		<br></br>
+		<div class="container">
+			<!-- Pictures from Pixabay -->
+			<img src="img/banniere.jpg" height="300" width="1019"/>
+		</div>
+		<br></br>
+		<h:form>
+			<h:commandLink action="lookArtist">
+				<button type="button" class="btn btn-success text-center center-block">
+					<h:outputText value="Consult my artists" />
+				</button>
+			</h:commandLink>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
