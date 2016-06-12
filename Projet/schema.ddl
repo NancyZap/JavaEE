@@ -62,7 +62,6 @@
         id bigint not null,
         groupe boolean,
         nom varchar(255),
-        prenom varchar(255),
         primary key (id)
     )
 

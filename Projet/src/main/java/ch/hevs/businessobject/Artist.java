@@ -18,10 +18,8 @@ public class Artist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
-	@Column(name="prenom")
-	private String name;
 	@Column(name="nom")
-	private String lastname;
+	private String name;
 	@Column(name="groupe")
 	private boolean band;
 
@@ -41,14 +39,6 @@ public class Artist {
 		this.name = name;
 	}
 	
-	// lastname
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-	
 	// band
 	public boolean getBand() {
 		return band;
@@ -59,12 +49,6 @@ public class Artist {
 	
 	//constructors
 	public Artist() {
-	}
-	public Artist(String name, String lastname, boolean band) {
-		this.name = name;
-		this.lastname = lastname;
-		this.band = band;
-		albums = new HashSet<Album>();
 	}
 	public Artist(String name, boolean band) {
 		this.name = name;

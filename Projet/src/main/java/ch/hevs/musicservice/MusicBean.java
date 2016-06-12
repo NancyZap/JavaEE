@@ -20,7 +20,7 @@ public class MusicBean implements MusicInterface {
 	
 	@Resource
 	private SessionContext ctx;
-	@PersistenceContext(name = "test", type = PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "musicPU", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 
 	@Override

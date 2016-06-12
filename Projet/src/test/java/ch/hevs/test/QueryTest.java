@@ -52,7 +52,7 @@ public class QueryTest {
 		try {
 
 			
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("musicPU");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
@@ -81,14 +81,14 @@ public class QueryTest {
 
 			
 			EntityManagerFactory emf = Persistence
-					.createEntityManagerFactory("musicPU");
+					.createEntityManagerFactory("test");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
 
 			Artist a1 = new Artist("Eminem", false);
 			Artist a2 = new Artist("Twenty One Pilots", true);
-			Artist a3 = new Artist ("Lana", "Del Rey", false);
+			Artist a3 = new Artist ("Lana Del Rey", false);
 			
 			Album alb1 = new Album("Blurryface", 2015);
 			alb1.addSongs(new Song("Stressed Out"));
