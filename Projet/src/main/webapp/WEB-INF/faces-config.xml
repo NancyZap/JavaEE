@@ -5,24 +5,45 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>transferBean</managed-bean-name>
-		<managed-bean-class>ch.hevs.managedbeans.TransferBean</managed-bean-class>
+		<managed-bean-name>artistManagedBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.ArtistManagedBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<navigation-rule>
-		<display-name>transferForm.xhtml</display-name>
-		<from-view-id>/transferForm.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>#{transferBean.performTransfer}</from-outcome>
-			<to-view-id>/showTransferResult.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+	<managed-bean>
+		<managed-bean-name>albumManagedBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.AlbumManagedBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- Accès de la page d'accueil "welcome.xhtml" vers la page "artists.xhtml" -->
 	<navigation-rule>
 		<display-name>welcome.xhtml</display-name>
 		<from-view-id>/welcome.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>lookArtist</from-outcome>
 			<to-view-id>/artists.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<!-- Accès depuis "artists.xhtml" à la page des albums "albums.xhtml" -->
+	<navigation-rule>
+		<display-name>artists.xhtml</display-name>
+		<from-view-id>/artists.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{transferBean.showArtistAlbums(a.id)}</from-action>
+			<from-outcome>yes</from-outcome>
+			<to-view-id>/albums.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>artists.xhtml</display-name>
+		<from-view-id>/artists.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{transferBean.showArtistAlbums(a.id)}</from-action>
+			<from-outcome>no</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 

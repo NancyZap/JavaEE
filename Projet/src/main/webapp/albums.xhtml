@@ -8,33 +8,65 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-    	<h:form>
-        	<h1><h:outputLabel value="My Albums"></h:outputLabel></h1>
-        	<br></br>
-        	<h:panelGrid columns="5">
-        		<h:outputText value="source: "></h:outputText>
-        		<h:outputText value="client: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.sourceClientName}" valueChangeListener="#{transferBean.updateSourceAccounts}" onchange="submit()">
-	        		<f:selectItems value="#{transferBean.clientNames}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="account: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.sourceAccountDescription}">
-	        		<f:selectItems value="#{transferBean.sourceAccountDescriptions}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="destination: "></h:outputText>
-        		<h:outputText value="client: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.destinationClientName}" valueChangeListener="#{transferBean.updateDestinationAccounts}" onchange="submit()">
-	        		<f:selectItems value="#{transferBean.clientNames}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="account: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.destinationAccountDescription}">
-	        		<f:selectItems value="#{transferBean.destinationAccountDescriptions}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="amount:"></h:outputText>
-                <h:inputText value="#{transferBean.transactionAmount}" maxlength="6" style="width: 40px;"></h:inputText>
-        	</h:panelGrid>
-     		<h:commandButton value="transfer" action="#{transferBean.performTransfer}"></h:commandButton>
-        </h:form>
+    	<div class="container">
+			<h:form id="formShowArtistAlbums">
+
+				<h1>
+					Albums de
+					<h:outputText value=" #{artistManagedBean.chosenArtist.name}" />
+				</h1>
+
+				<div class="well well-lg">
+					<table class="table">
+						<tr>
+							<td><b>Nom</b></td>
+							<td><h:inputText id="firstname" class="form-control"
+									value="#{artistManagedBean.albumsList}"/></td>
+						</tr>
+
+						
+					</table>
+
+				</div>
+			</h:form>
+
+		</div>
+		
+		<div class="container">
+		<h:form>
+			<h:dataTable class="table table-striped"
+				value="#{artistManagedBean.albumsList}" var="al">
+
+				<h:column>
+					<f:facet name="header">Titre</f:facet>
+					<h:outputText value="#{al.title}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Année</f:facet>
+					<h:outputText value="#{al.year}" />
+				</h:column>
+								
+				<h:column>
+				
+					<h:commandButton styleClass="btn btn-info"
+						action="#{managerManagedBean.showSpecificManager(s.id)}"
+						value=">>> Voir"/>
+
+				  </h:column>
+				  
+				  <h:column>
+					<h:commandLink
+					    action="#{managerManagedBean.deleteManager(s.id)}"
+					    styleClass="btn btn-danger">
+					    <span class="glyphicon glyphicon-remove"></span>
+					</h:commandLink>
+				  </h:column>
+
+			</h:dataTable>
+		</h:form>
+    
+    </div>
     </ui:define>
 </ui:composition>
 </html>

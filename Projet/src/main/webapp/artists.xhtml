@@ -15,31 +15,29 @@
 			<br></br>
 			<h:panelGrid columns="2">
 				<h:outputText value="Artist name : "></h:outputText>
-				<h:selectOneMenu value="#{transferBean.artistName}">
-					<f:selectItems value="#{transferBean.artistNames}" />
+				<h:selectOneMenu value="#{artistManagedBean.artistName}">
+					<f:selectItems value="#{artistManagedBean.artistNames}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
 			<br></br>
 			<h:commandButton class="btn btn-success text-center center-block"
-				value="Show info" action="#{transferBean.performTransfer}"></h:commandButton>
+				value="Show info" action="#{artistManagedBean.performTransfer}"></h:commandButton>
 		</h:form>
 
 		<div class="container">
 			<h:form>
 				<h:dataTable class="table table-striped"
-					value="#{transferBean.artists}" var="a">
+					value="#{artistManagedBean.artists}" var="a">
 
 					<h:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{a.name}" />
 					</h:column>
-
+					
 					<h:column>
-
 						<h:commandButton styleClass="btn btn-success"
-							action="#{athleteManagedBean.showSpecificAthlete(s.id)}"
+							action="#{artistManagedBean.showArtistAlbums(a.id)}"
 							value="Voir" />
-
 					</h:column>
 
 				</h:dataTable>
