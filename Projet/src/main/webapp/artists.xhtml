@@ -8,20 +8,12 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
+	
 		<h:form>
 			<h1 class="text-center">
-				<h:outputLabel value="My Artists"></h:outputLabel>
+				<h:outputLabel value="My artists"></h:outputLabel>
 			</h1>
 			<br></br>
-			<h:panelGrid columns="2">
-				<h:outputText value="Artist name : "></h:outputText>
-				<h:selectOneMenu value="#{artistManagedBean.artistName}">
-					<f:selectItems value="#{artistManagedBean.artistNames}" />
-				</h:selectOneMenu>
-			</h:panelGrid>
-			<br></br>
-			<h:commandButton class="btn btn-success text-center center-block"
-				value="Show info" action="#{artistManagedBean.performTransfer}"></h:commandButton>
 		</h:form>
 
 		<div class="container">
@@ -30,19 +22,63 @@
 					value="#{artistManagedBean.artists}" var="a">
 
 					<h:column>
-						<f:facet name="header">Name</f:facet>
+						<f:facet name="header">Artists</f:facet>
 						<h:outputText value="#{a.name}" />
 					</h:column>
-					
+
 					<h:column>
-						<h:commandButton styleClass="btn btn-success"
+						<f:facet name="header">Consult</f:facet>
+						<h:commandLink
 							action="#{artistManagedBean.showArtistAlbums(a.id)}"
-							value="Voir" />
+							styleClass="btn btn-success">
+							<span class="glyphicon glyphicon-eye-open block-right"></span>
+						</h:commandLink>
+
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandLink
+							action="#{artistManagedBean.showArtistAlbums(a.id)}"
+							styleClass="btn btn-danger">
+							<span class="glyphicon glyphicon-remove block-right"></span>
+						</h:commandLink>
+
 					</h:column>
 
 				</h:dataTable>
 			</h:form>
 
+		</div>
+
+		<div class="container">
+			<h1>Add an artist</h1>
+			<h:form id="formAddArtist">
+				<table class="table">
+					<tr>
+						<td align="right"><b>Name</b></td>
+						<td><h:inputText id="name" class="form-control"
+								value="#{artistManagedBean.artistName}" /></td>
+					</tr>
+
+					<!--  A CORRIGER LA PARTIE DE LA CHECKBOX ET DE L'ENREGISTREMENT -->
+
+					<tr>
+						<td align="right"><b>Band</b></td>
+						<td><h:selectManyCheckbox
+								value="#{artistManagedBean.artistName}">
+								<f:selectItem itemValue="1" itemLabel="" />
+							</h:selectManyCheckbox></td>
+
+					</tr>
+
+				</table>
+				<h:commandLink action="#{artistManagedBean.addArtist()}"
+					styleClass="btn btn-success center-block">
+					<span class="glyphicon glyphicon-plus"></span>
+				</h:commandLink>
+			</h:form>
+			<br></br> <br></br> <br></br> <br></br>
 		</div>
 
 	</ui:define>

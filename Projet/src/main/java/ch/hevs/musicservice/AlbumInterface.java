@@ -11,4 +11,12 @@ import ch.hevs.businessobject.Artist;
 public interface AlbumInterface {
 	
 	List<Album> showAlbumsByArtist(long id_artist);
+	
+	public void addAlbum(Album album);
+	
+	//TODO : DELETE METHOD
+	
+	//TODO : UPDATE METHOD
+	
+	//TODO : SHOW ALL ALBUMS ?
 }

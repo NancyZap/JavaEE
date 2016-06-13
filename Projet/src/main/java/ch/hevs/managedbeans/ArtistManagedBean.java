@@ -35,34 +35,40 @@ public class ArtistManagedBean
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
 		artist = (ArtistInterface) ctx.lookup("java:global/projet-0.0.1-SNAPSHOT/ArtistBean!ch.hevs.musicservice.ArtistInterface");    	
-		                                  
+
 		// get artists
 		artistsList = artist.getArtists();
 		this.artistNames = new ArrayList<String>();
 		for (Artist artist : artistsList) {
 			this.artistNames.add(artist.getName());
 		}
-		
+
+	}
+
+	// Show the albums of an artist
+	public String showArtistAlbums(long id_artist)
+	{
+		try
+		{
+			albumsList = artist.showArtistAlbums(id_artist);
+			return "yes";
+		}
+		catch(Exception e)
+		{
+			return "no";
+		}
 	}
 	
-	// Show the albums of an artist
-		public String showArtistAlbums(long id_artist)
-		{
-			try
-			{
-				albumsList = artist.showArtistAlbums(id_artist);
-				return "yes";
-			}
-			catch(Exception e)
-			{
-				return "no";
-			}
-		}
+	// Add artist
+	// TODO: faire la méthode d'ajout d'artistes
+	public String addArtist() {
+		return null;
+	}
 
 	// Getters & setters
 	public String getArtistName() {
 		return artistName;
-	}	
+	}
 
 	public void setArtistName(final String artistName) {
 		this.artistName = artistName;
@@ -83,7 +89,7 @@ public class ArtistManagedBean
 	public void setChosenArtist(Artist chosenArtist) {
 		this.chosenArtist = chosenArtist;
 	}
-/*
+	/*
 	public List<Album> getAlbumsList() {
 		return albumsList;
 	}
@@ -91,7 +97,7 @@ public class ArtistManagedBean
 	public void setAlbumsList(List<Album> albumsList) {
 		this.albumsList = albumsList;
 	}
-*/
+	 */
 
 	public Set<Album> getAlbumsList() {
 		return albumsList;
@@ -100,7 +106,7 @@ public class ArtistManagedBean
 	public void setAlbumsList(Set<Album> albumsList) {
 		this.albumsList = albumsList;
 	}
-	
-	
+
+
 } 
 

@@ -15,4 +15,10 @@ public interface ArtistInterface {
 	List<Artist> getArtists();
 	
 	public Set<Album> showArtistAlbums(long id_artist);
+	
+	public void addArtist(Artist artist);
+	
+	//TODO : DELETE METHOD
+	
+	//TODO : UPDATE METHOD
 }

@@ -48,14 +48,18 @@
 				</h:column>
 								
 				<h:column>
-				
-					<h:commandButton styleClass="btn btn-info"
-						action="#{managerManagedBean.showSpecificManager(s.id)}"
-						value=">>> Voir"/>
+						
+					<f:facet name="header">Consult</f:facet>
+						<h:commandLink
+							action="#{artistManagedBean.showArtistAlbums(a.id)}"
+							styleClass="btn btn-success">
+							<span class="glyphicon glyphicon-eye-open block-right"></span>
+						</h:commandLink>
 
 				  </h:column>
 				  
 				  <h:column>
+				  <f:facet name="header">Delete</f:facet>
 					<h:commandLink
 					    action="#{managerManagedBean.deleteManager(s.id)}"
 					    styleClass="btn btn-danger">
@@ -67,6 +71,37 @@
 		</h:form>
     
     </div>
+    
+    <div class="container">
+			<h1>Add an album</h1>
+			<h:form id="formAddArtist">
+				<table class="table">
+					<tr>
+						<td align="right"><b>Title</b></td>
+						<td>
+							<h:inputText id="title" class="form-control"
+								value="#{artistManagedBean.artistName}" />
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right"><b>Year</b></td>
+						<td>
+							<h:inputText id="year" class="form-control"
+								value="#{albumManagedBean.album}" />
+						</td>
+
+					</tr>
+
+				</table>
+				<h:commandLink action="#{albumManagedBean.addAlbum()}"
+					styleClass="btn btn-success center-block">
+					<span class="glyphicon glyphicon-plus"></span>
+				</h:commandLink>
+			</h:form>
+			<br></br> <br></br> <br></br> <br></br>
+		</div>
+    
     </ui:define>
 </ui:composition>
 </html>

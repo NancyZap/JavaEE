@@ -48,4 +48,10 @@ public class ArtistBean implements ArtistInterface {
 		return albumsList;
 	}
 
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public void addArtist(Artist artist) {
+		em.persist(artist);
+		
+	}
+
 }

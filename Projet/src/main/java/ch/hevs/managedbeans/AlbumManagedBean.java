@@ -30,41 +30,47 @@ public class AlbumManagedBean
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
 		album = (AlbumInterface) ctx.lookup("java:global/projet-0.0.1-SNAPSHOT/AlbumBean!ch.hevs.musicservice.AlbumInterface");    	
-		
+
+	}
+
+	// Show the albums of an artist
+	public String showArtistAlbums(long id_artist)
+	{
+		try
+		{
+			albumsList = album.showAlbumsByArtist(id_artist);
+			return "yes";
+		}
+		catch(Exception e)
+		{
+			return "no";
+		}
 	}
 	
-	// Show the albums of an artist
-		public String showArtistAlbums(long id_artist)
-		{
-			try
-			{
-				albumsList = album.showAlbumsByArtist(id_artist);
-				return "yes";
-			}
-			catch(Exception e)
-			{
-				return "no";
-			}
-		}
-		
-		// Getters & setters
+	// Add album
+	// TODO: faire la méthode d'ajout d'albums
+	public String addAlbum() {
+		return null;
+	}
 
-		public List<Album> getAlbumsList() {
-			return albumsList;
-		}
+	// Getters & setters
 
-		public void setAlbumsList(List<Album> albumsList) {
-			this.albumsList = albumsList;
-		}
+	public List<Album> getAlbumsList() {
+		return albumsList;
+	}
 
-		public AlbumInterface getAlbum() {
-			return album;
-		}
+	public void setAlbumsList(List<Album> albumsList) {
+		this.albumsList = albumsList;
+	}
 
-		public void setAlbum(AlbumInterface album) {
-			this.album = album;
-		}
+	public AlbumInterface getAlbum() {
+		return album;
+	}
 
-	
+	public void setAlbum(AlbumInterface album) {
+		this.album = album;
+	}
+
+
 } 
 

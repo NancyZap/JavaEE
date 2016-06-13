@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -30,6 +32,12 @@ public class AlbumBean implements AlbumInterface {
 		
 		
 		return listAlbumsByArtist;
+	}
+
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public void addAlbum(Album album) {
+		em.persist(album);
+		
 	}
 	
 	
