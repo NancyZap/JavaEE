@@ -4,6 +4,6 @@
   <nodes xsi:type="pageflow:PFPage" name="artists.xhtml" x="384" y="384" id="pf14656382650355" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14658166303305 pf14658166303304" inlinks="pf14656382650354" path="/artists.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="albums.xhtml" x="584" y="401" id="pf14656382650356" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14658166303305" path="/albums.xhtml"/>
   <links id="pf14656382650354" target="pf14656382650355" source="pf14656382650353" outcome="lookArtist"/>
-  <links id="pf14658166303305" target="pf14656382650356" source="pf14656382650355" outcome="yes" redirect="true" fromaction="#{transferBean.showArtistAlbums(a.id)}"/>
-  <links id="pf14658166303304" target="pf14656382650353" source="pf14656382650355" outcome="no" redirect="true" fromaction="#{transferBean.showArtistAlbums(a.id)}"/>
+  <links id="pf14658166303305" target="pf14656382650356" source="pf14656382650355" outcome="yes" redirect="true" fromaction="#{artistManagedBean.showArtistAlbums(a.id)}"/>
+  <links id="pf14658166303304" target="pf14656382650353" source="pf14656382650355" outcome="no" redirect="true" fromaction="#{artistManagedBean.showArtistAlbums(a.id)}"/>
 </pageflow:Pageflow>

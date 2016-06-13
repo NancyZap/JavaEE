@@ -30,7 +30,7 @@
 		<display-name>artists.xhtml</display-name>
 		<from-view-id>/artists.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{transferBean.showArtistAlbums(a.id)}</from-action>
+			<from-action>#{artistManagedBean.showArtistAlbums(a.id)}</from-action>
 			<from-outcome>yes</from-outcome>
 			<to-view-id>/albums.xhtml</to-view-id>
 			<redirect />
@@ -40,7 +40,7 @@
 		<display-name>artists.xhtml</display-name>
 		<from-view-id>/artists.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{transferBean.showArtistAlbums(a.id)}</from-action>
+			<from-action>#{artistManagedBean.showArtistAlbums(a.id)}</from-action>
 			<from-outcome>no</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
 			<redirect />
