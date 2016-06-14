@@ -22,7 +22,6 @@ import ch.hevs.musicservice.SongInterface;
 public class SongManagedBean
 {
 	private List<Song> songsList;
-
 	private SongInterface song;
 
 	@PostConstruct

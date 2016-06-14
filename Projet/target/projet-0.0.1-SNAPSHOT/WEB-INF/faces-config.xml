@@ -18,6 +18,11 @@
 		<managed-bean-class>ch.hevs.managedbeans.SongManagedBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>typeManagedBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.TypeManagedBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 	<!-- Accès de la page d'accueil "welcome.xhtml" vers la page "artists.xhtml" -->
 	<navigation-rule>

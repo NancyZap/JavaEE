@@ -108,12 +108,34 @@ public class QueryTest {
 			alb1.addTypes(new Type("Hip hop alternatif"));
 			alb1.addTypes(new Type("Rock"));
 			
+			Type t1 = new Type("Metal");
+			Type t2 = new Type("Jazz");
+			Type t3 = new Type("Blues");
+			Type t4 = new Type("Variété");
+			Type t5 = new Type("Reggae");
+			Type t6 = new Type("Electro");
+			Type t7 = new Type("Pop");
+			Type t8 = new Type("Soul");
+			Type t9 = new Type("Funk");
+			Type t10 = new Type("Indie");
+			
 			a2.addAlbums(alb1);
 
 			//em.persist(a);
 			em.persist(a1);
 			em.persist(a2);
 			em.persist(a3);
+			
+			em.persist(t1);
+			em.persist(t2);
+			em.persist(t3);
+			em.persist(t4);
+			em.persist(t5);
+			em.persist(t6);
+			em.persist(t7);
+			em.persist(t8);
+			em.persist(t9);
+			em.persist(t10);
 			
 			em.persist(alb1);
 	

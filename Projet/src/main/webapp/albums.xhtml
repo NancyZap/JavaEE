@@ -82,6 +82,16 @@
 						</td>
 
 					</tr>
+					
+						<tr>
+						<td align="right"><b>Type</b></td>
+						<td>
+	        				<h:selectOneMenu value="#{typeManagedBean.typeDescription}">
+	        					<f:selectItems value="#{typeManagedBean.typeDescriptions}"/>
+	        				</h:selectOneMenu>	
+						</td>
+
+					</tr>
 
 				</table>
 				<h:commandLink action="#{albumManagedBean.addAlbum(artistManagedBean.artistId)}"

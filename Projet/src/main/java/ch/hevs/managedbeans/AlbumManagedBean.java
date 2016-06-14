@@ -1,5 +1,6 @@
 package ch.hevs.managedbeans;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -7,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import ch.hevs.businessobject.Album;
+import ch.hevs.businessobject.Artist;
 import ch.hevs.businessobject.Song;
 import ch.hevs.musicservice.AlbumInterface;
 
@@ -19,7 +21,7 @@ import ch.hevs.musicservice.AlbumInterface;
 public class AlbumManagedBean
 {
 
-	private String title; 
+	private String title;
 	private int year; 
 	
 	// TODO: Supprimer si pas utilisé
@@ -35,7 +37,6 @@ public class AlbumManagedBean
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
 		album = (AlbumInterface) ctx.lookup("java:global/projet-0.0.1-SNAPSHOT/AlbumBean!ch.hevs.musicservice.AlbumInterface");    	
-
 	}
 
 	// Show the songs of an album
