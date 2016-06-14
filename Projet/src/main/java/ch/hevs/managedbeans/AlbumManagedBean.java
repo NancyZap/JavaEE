@@ -2,6 +2,7 @@ package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.naming.InitialContext;
@@ -9,8 +10,10 @@ import javax.naming.NamingException;
 
 import ch.hevs.businessobject.Album;
 import ch.hevs.businessobject.Artist;
+import ch.hevs.businessobject.Song;
 import ch.hevs.musicservice.AlbumInterface;
 import ch.hevs.musicservice.ArtistInterface;
+import ch.hevs.musicservice.SongInterface;
 
 /**
  * AlbumManagedBean.java
@@ -20,7 +23,10 @@ import ch.hevs.musicservice.ArtistInterface;
 public class AlbumManagedBean
 {
 
+	// TODO: Supprimer si pas utilisé
 	private List<Album> albumsList;
+
+	private Set<Song> songsList;
 
 	private AlbumInterface album;
 
@@ -33,6 +39,24 @@ public class AlbumManagedBean
 
 	}
 
+	// Show the songs of an album
+	public String showAlbumSongs(long id_album)
+	{
+		try
+		{
+			songsList = album.showAlbumSongs(id_album);
+			return "yes";
+		}
+		catch(Exception e)
+		{
+			return "no";
+		}
+	}
+
+	
+	
+	// TODO: Méthode à supprimer si pas utilisée
+	/*
 	// Show the albums of an artist
 	public String showArtistAlbums(long id_artist)
 	{
@@ -46,7 +70,16 @@ public class AlbumManagedBean
 			return "no";
 		}
 	}
-	
+	 */
+
+	public Set<Song> getSongsList() {
+		return songsList;
+	}
+
+	public void setSongsList(Set<Song> songsList) {
+		this.songsList = songsList;
+	}
+
 	// Add album
 	// TODO: faire la méthode d'ajout d'albums
 	public String addAlbum() {

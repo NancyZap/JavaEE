@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
 	<managed-bean>
 		<managed-bean-name>artistManagedBean</managed-bean-name>
 		<managed-bean-class>ch.hevs.managedbeans.ArtistManagedBean</managed-bean-class>
@@ -14,7 +13,12 @@
 		<managed-bean-class>ch.hevs.managedbeans.AlbumManagedBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+	<managed-bean>
+		<managed-bean-name>songManagedBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.SongManagedBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
 	<!-- Accès de la page d'accueil "welcome.xhtml" vers la page "artists.xhtml" -->
 	<navigation-rule>
 		<display-name>welcome.xhtml</display-name>
@@ -24,8 +28,8 @@
 			<to-view-id>/artists.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-		<!-- Accès depuis "artists.xhtml" à la page des albums "albums.xhtml" -->
+
+	<!-- Accès depuis "artists.xhtml" à la page des albums "albums.xhtml" -->
 	<navigation-rule>
 		<display-name>artists.xhtml</display-name>
 		<from-view-id>/artists.xhtml</from-view-id>
@@ -41,6 +45,28 @@
 		<from-view-id>/artists.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{artistManagedBean.showArtistAlbums(a.id)}</from-action>
+			<from-outcome>no</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Accès depuis "albums.xhtml" à la page des chansons "songs.xhtml" -->
+	<navigation-rule>
+		<display-name>albums.xhtml</display-name>
+		<from-view-id>/albums.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{albumManagedBean.showAlbumSongs(al.id)}</from-action>
+			<from-outcome>yes</from-outcome>
+			<to-view-id>/songs.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>albums.xhtml</display-name>
+		<from-view-id>/albums.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{albumManagedBean.showAlbumSongs(al.id)}</from-action>
 			<from-outcome>no</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
 			<redirect />

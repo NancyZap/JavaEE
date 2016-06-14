@@ -13,7 +13,7 @@
 
 				<h1>
 					Albums de
-					<h:outputText value=" #{artistManagedBean.chosenArtist.name}" />
+					<h:outputText value=" #{a.artistName}" />
 				</h1>
 
 				<div class="well well-lg">
@@ -51,7 +51,7 @@
 						
 					<f:facet name="header">Consult</f:facet>
 						<h:commandLink
-							action="#{artistManagedBean.showArtistAlbums(a.id)}"
+							action="#{albumManagedBean.showAlbumSongs(al.id)}"
 							styleClass="btn btn-success">
 							<span class="glyphicon glyphicon-eye-open block-right"></span>
 						</h:commandLink>

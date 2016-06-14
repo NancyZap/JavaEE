@@ -1,9 +1,12 @@
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\businessobject\Album.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\businessobject\Song.java
+H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\musicservice\SongBean.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\exception\BankException.java
+H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\musicservice\SongInterface.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\businessobject\Account.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\businessobject\Artist.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\businessobject\Client.java
+H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\managedbeans\SongManagedBean.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\musicservice\AlbumInterface.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\managedbeans\ArtistManagedBean.java
 H:\rootJavaEE\Labs\JavaEE\Projet\src\main\java\ch\hevs\musicservice\ArtistBean.java

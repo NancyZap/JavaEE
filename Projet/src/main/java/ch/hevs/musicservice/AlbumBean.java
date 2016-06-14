@@ -2,6 +2,7 @@ package ch.hevs.musicservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import ch.hevs.businessobject.Album;
+import ch.hevs.businessobject.Song;
 
 @Stateful
 public class AlbumBean implements AlbumInterface {
@@ -38,6 +40,18 @@ public class AlbumBean implements AlbumInterface {
 	public void addAlbum(Album album) {
 		em.persist(album);
 		
+	}
+
+	@Override
+	public Set<Song> showAlbumSongs(long id_album) {
+		Query query = em.createQuery("SELECT alb FROM Album alb where alb.id=:id");
+		query.setParameter("id", id_album);
+		
+		Album album = (Album) query.getSingleResult();
+		
+		Set<Song> songsList = album.getSongs();
+		
+		return songsList;
 	}
 	
 	
