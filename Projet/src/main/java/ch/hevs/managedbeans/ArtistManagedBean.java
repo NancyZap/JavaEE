@@ -25,6 +25,9 @@ public class ArtistManagedBean
 	//private List<Album> albumsList;
 	private Set<Album> albumsList;
 	private String artistName;
+	private boolean band;
+	
+
 	private Artist chosenArtist;
 
 	private ArtistInterface artist;
@@ -60,12 +63,20 @@ public class ArtistManagedBean
 	}
 	
 	// Add artist
-	// TODO: faire la méthode d'ajout d'artistes
-	public String addArtist() {
-		return null;
+	public void addArtist() {
+		Artist a = new Artist(this.artistName, this.band);
+		artist.addArtist(a);
 	}
 
 	// Getters & setters
+	public boolean isBand() {
+		return band;
+	}
+
+	public void setBand(boolean band) {
+		this.band = band;
+	}
+	
 	public String getArtistName() {
 		return artistName;
 	}

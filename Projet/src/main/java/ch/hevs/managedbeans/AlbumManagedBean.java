@@ -1,19 +1,15 @@
 package ch.hevs.managedbeans;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
 import ch.hevs.businessobject.Album;
-import ch.hevs.businessobject.Artist;
 import ch.hevs.businessobject.Song;
 import ch.hevs.musicservice.AlbumInterface;
-import ch.hevs.musicservice.ArtistInterface;
-import ch.hevs.musicservice.SongInterface;
+
 
 /**
  * AlbumManagedBean.java
@@ -23,6 +19,9 @@ import ch.hevs.musicservice.SongInterface;
 public class AlbumManagedBean
 {
 
+	private String title; 
+	private int year; 
+	
 	// TODO: Supprimer si pas utilisé
 	private List<Album> albumsList;
 
@@ -81,12 +80,28 @@ public class AlbumManagedBean
 	}
 
 	// Add album
-	// TODO: faire la méthode d'ajout d'albums
-	public String addAlbum() {
-		return null;
+	public void addAlbum() {
+		Album a = new Album(this.title, this.year);
+		album.addAlbum(a);
 	}
 
 	// Getters & setters
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 
 	public List<Album> getAlbumsList() {
 		return albumsList;

@@ -61,14 +61,11 @@
 								value="#{artistManagedBean.artistName}" /></td>
 					</tr>
 
-					<!--  A CORRIGER LA PARTIE DE LA CHECKBOX ET DE L'ENREGISTREMENT -->
-
 					<tr>
 						<td align="right"><b>Band</b></td>
-						<td><h:selectManyCheckbox
-								value="#{artistManagedBean.artistName}">
-								<f:selectItem itemValue="1" itemLabel="" />
-							</h:selectManyCheckbox></td>
+						<td><h:selectBooleanCheckbox
+								value="#{artistManagedBean.band}">
+							</h:selectBooleanCheckbox></td>
 
 					</tr>
 

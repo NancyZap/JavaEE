@@ -17,6 +17,7 @@ import javax.persistence.Query;
 import ch.hevs.businessobject.Album;
 import ch.hevs.businessobject.Song;
 
+
 @Stateful
 public class AlbumBean implements AlbumInterface {
 
@@ -24,6 +25,7 @@ public class AlbumBean implements AlbumInterface {
 	private SessionContext ctx;
 	@PersistenceContext(name = "musicPU", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
+	
 	
 	@Override
 	public List<Album> showAlbumsByArtist(long id_artist) {

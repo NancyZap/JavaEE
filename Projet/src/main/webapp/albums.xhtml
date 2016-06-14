@@ -80,7 +80,8 @@
 						<td align="right"><b>Title</b></td>
 						<td>
 							<h:inputText id="title" class="form-control"
-								value="#{artistManagedBean.artistName}" />
+								value="#{albumManagedBean.title}" required="true"
+								requiredMessage="Put a title"></h:inputText>
 						</td>
 					</tr>
 
@@ -88,13 +89,14 @@
 						<td align="right"><b>Year</b></td>
 						<td>
 							<h:inputText id="year" class="form-control"
-								value="#{albumManagedBean.album}" />
+								value="#{albumManagedBean.year}" required="true"
+								requiredMessage="Put a year"></h:inputText>
 						</td>
 
 					</tr>
 
 				</table>
-				<h:commandLink action="#{albumManagedBean.addAlbum()}"
+				<h:commandLink action="#{albumManagedBean.addAlbum}"
 					styleClass="btn btn-success center-block">
 					<span class="glyphicon glyphicon-plus"></span>
 				</h:commandLink>
