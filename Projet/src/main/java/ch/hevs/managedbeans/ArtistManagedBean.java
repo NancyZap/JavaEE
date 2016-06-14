@@ -2,9 +2,11 @@ package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -25,11 +27,9 @@ public class ArtistManagedBean
 	//private List<Album> albumsList;
 	private Set<Album> albumsList;
 	private String artistName;
+	private long artistId;
 	private boolean band;
-	
-
 	private Artist chosenArtist;
-
 	private ArtistInterface artist;
 
 	@PostConstruct
@@ -54,6 +54,11 @@ public class ArtistManagedBean
 		try
 		{
 			albumsList = artist.showArtistAlbums(id_artist);
+			FacesContext fc = FacesContext.getCurrentInstance();
+		    Map<String,String> params = 
+		    fc.getExternalContext().getRequestParameterMap();
+		    artistName =  params.get("artistN"); 
+		    artistId = Long.valueOf(params.get("artistId")).longValue();
 			return "yes";
 		}
 		catch(Exception e)
@@ -62,6 +67,7 @@ public class ArtistManagedBean
 		}
 	}
 	
+
 	// Add artist
 	public void addArtist() {
 		if(!artist.exist(this.artistName)){
@@ -70,6 +76,14 @@ public class ArtistManagedBean
 	}
 
 	// Getters & setters
+	public long getArtistId() {
+		return artistId;
+	}
+
+	public void setArtistId(long artistId) {
+		this.artistId = artistId;
+	}
+	
 	public boolean isBand() {
 		return band;
 	}

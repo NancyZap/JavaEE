@@ -14,7 +14,7 @@ public interface AlbumInterface {
 	
 	List<Album> showAlbumsByArtist(long id_artist);
 	
-	public void addAlbum(Album album);
+	public void addAlbum(Album album, long idArtist);
 	
 	public boolean exist(String name);
 

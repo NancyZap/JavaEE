@@ -1,6 +1,5 @@
 package ch.hevs.musicservice;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,12 +35,18 @@ public class AlbumBean implements AlbumInterface {
 		
 		List<Album> listAlbumsByArtist = (List<Album>) query.getResultList();
 		
-		
 		return listAlbumsByArtist;
 	}
 
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
-	public void addAlbum(Album album) {
+	public void addAlbum(Album album, long idArtist) {
+		Query query = em.createQuery("SELECT a from Artist a WHERE a.id=:id", Artist.class);	
+		query.setParameter("id", idArtist);
+		
+		Artist art = (Artist) query.getSingleResult();
+		
+		art.addAlbums(album);
+		
 		em.persist(album);
 		
 	}

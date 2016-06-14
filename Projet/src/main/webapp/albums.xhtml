@@ -13,21 +13,9 @@
 
 				<h1>
 					Albums de
-					<h:outputText value=" #{a.artistName}" />
+					<h:outputText value="#{artistManagedBean.artistName}" />
 				</h1>
 
-				<div class="well well-lg">
-					<table class="table">
-						<tr>
-							<td><b>Nom</b></td>
-							<td><h:inputText id="firstname" class="form-control"
-									value="#{artistManagedBean.albumsList}"/></td>
-						</tr>
-
-						
-					</table>
-
-				</div>
 			</h:form>
 
 		</div>
@@ -96,7 +84,7 @@
 					</tr>
 
 				</table>
-				<h:commandLink action="#{albumManagedBean.addAlbum}"
+				<h:commandLink action="#{albumManagedBean.addAlbum(artistManagedBean.artistId)}"
 					styleClass="btn btn-success center-block">
 					<span class="glyphicon glyphicon-plus"></span>
 				</h:commandLink>

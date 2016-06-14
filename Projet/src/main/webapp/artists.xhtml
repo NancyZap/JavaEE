@@ -31,6 +31,8 @@
 						<h:commandLink
 							action="#{artistManagedBean.showArtistAlbums(a.id)}"
 							styleClass="btn btn-success">
+							<f:param name="artistN" value="#{a.name}" />
+							<f:param name="artistId" value="#{a.id}" />
 							<span class="glyphicon glyphicon-eye-open block-right"></span>
 						</h:commandLink>
 
