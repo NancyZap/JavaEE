@@ -81,8 +81,9 @@ public class AlbumManagedBean
 
 	// Add album
 	public void addAlbum() {
+		if(!album.exist(this.title)){
 		Album a = new Album(this.title, this.year);
-		album.addAlbum(a);
+		album.addAlbum(a);}
 	}
 
 	// Getters & setters

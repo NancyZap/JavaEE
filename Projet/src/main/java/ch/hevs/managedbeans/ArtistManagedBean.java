@@ -64,8 +64,9 @@ public class ArtistManagedBean
 	
 	// Add artist
 	public void addArtist() {
+		if(!artist.exist(this.artistName)){
 		Artist a = new Artist(this.artistName, this.band);
-		artist.addArtist(a);
+		artist.addArtist(a);}
 	}
 
 	// Getters & setters

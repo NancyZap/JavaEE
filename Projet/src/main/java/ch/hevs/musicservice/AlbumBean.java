@@ -13,8 +13,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ch.hevs.businessobject.Album;
+import ch.hevs.businessobject.Artist;
 import ch.hevs.businessobject.Song;
 
 
@@ -54,6 +56,18 @@ public class AlbumBean implements AlbumInterface {
 		Set<Song> songsList = album.getSongs();
 		
 		return songsList;
+	}
+
+	@Override
+	public boolean exist(String title) {
+		TypedQuery query = em.createQuery("SELECT alb FROM Album alb WHERE alb.title=:title", Album.class);
+		query.setParameter("title", title);
+		try{
+			Album album = (Album) query.getSingleResult();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 	
 	

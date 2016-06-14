@@ -33,6 +33,19 @@ public class ArtistBean implements ArtistInterface {
 		return list;
 	}
 
+	
+	public boolean exist(String name){
+		TypedQuery query = em.createQuery("SELECT a FROM Artist a WHERE a.name=:name", Artist.class);
+		query.setParameter("name", name);
+		try{
+			Artist artist = (Artist) query.getSingleResult();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	
+	}
+	
 	@Override
 	public Set<Album> showArtistAlbums(long id_artist) {
 		Query query = em.createQuery("SELECT art FROM Artist art WHERE art.id=:id");

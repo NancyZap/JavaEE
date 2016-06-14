@@ -16,6 +16,8 @@ public interface ArtistInterface {
 	
 	public Set<Album> showArtistAlbums(long id_artist);
 	
+	public boolean exist(String name);
+	
 	public void addArtist(Artist artist);
 	
 	//TODO : DELETE METHOD
