@@ -32,6 +32,13 @@ public class TypeManagedBean {
 			this.typeDescriptions.add(type.getDescription());
 		}
 	}
+	
+	// Delete a type
+	public void deleteType(long id_type)
+	{
+		type.deleteType(id_type);
+		typesList = type.getTypes();
+	}
 
 
 	//Getters & Setters

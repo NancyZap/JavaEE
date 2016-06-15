@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+	
+		<h:form>
+			<h1 class="text-center">
+				<h:outputLabel value="Music types"></h:outputLabel>
+			</h1>
+			<br></br>
+		</h:form>
+
+		<div class="container">
+			<h:form>
+				<h:dataTable class="table table-striped"
+					value="#{typeManagedBean.typesList}" var="t">
+
+					<h:column>
+						<f:facet name="header">Type</f:facet>
+						<h:outputText value="#{t.description}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandLink action="#{typeManagedBean.deleteType(t.id)}"
+							styleClass="btn btn-danger">
+							<span class="glyphicon glyphicon-remove block-right"></span>
+						</h:commandLink>
+
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+
+		</div>
+
+		<div class="container">
+			<h1>Add a type</h1>
+			<h:form id="formAddType">
+				<table class="table">
+					<tr>
+						<td align="right"><b>Description</b></td>
+						<td><h:inputText id="name" class="form-control"
+								value="#{artistManagedBean.artistName}" /></td>
+					</tr>
+
+				</table>
+				<h:commandLink action="#{artistManagedBean.addArtist()}"
+					styleClass="btn btn-success center-block" onchange="submit();">
+					<span class="glyphicon glyphicon-plus"></span>
+				</h:commandLink>
+			</h:form>
+			<br></br> <br></br> <br></br> <br></br>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

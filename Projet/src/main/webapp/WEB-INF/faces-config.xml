@@ -77,5 +77,13 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>welcome.xhtml</display-name>
+		<from-view-id>/welcome.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>lookTypes</from-outcome>
+			<to-view-id>/types.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
