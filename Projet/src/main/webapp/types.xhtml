@@ -47,11 +47,11 @@
 					<tr>
 						<td align="right"><b>Description</b></td>
 						<td><h:inputText id="name" class="form-control"
-								value="#{artistManagedBean.artistName}" /></td>
+								value="#{typeManagedBean.typeDescription}" /></td>
 					</tr>
 
 				</table>
-				<h:commandLink action="#{artistManagedBean.addArtist()}"
+				<h:commandLink action="#{typeManagedBean.addType()}"
 					styleClass="btn btn-success center-block" onchange="submit();">
 					<span class="glyphicon glyphicon-plus"></span>
 				</h:commandLink>

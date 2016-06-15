@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import ch.hevs.businessobject.Album;
-import ch.hevs.businessobject.Artist;
 import ch.hevs.businessobject.Song;
 import ch.hevs.musicservice.AlbumInterface;
 
@@ -23,9 +22,11 @@ public class AlbumManagedBean
 
 	private String title;
 	private int year; 
-	
+
 	// TODO: Supprimer si pas utilisé
-	private List<Album> albumsList;
+	//private List<Album> albumsList;
+	
+	private Set<Album> albumsList;
 
 	private Set<Song> songsList;
 
@@ -53,8 +54,8 @@ public class AlbumManagedBean
 		}
 	}
 
-	
-	
+
+
 	// TODO: Méthode à supprimer si pas utilisée
 	/*
 	// Show the albums of an artist
@@ -83,8 +84,10 @@ public class AlbumManagedBean
 	// Add album
 	public void addAlbum(long idArtist) {
 		if(!album.exist(this.title)){
-		Album a = new Album(this.title, this.year);
-		album.addAlbum(a, idArtist);}
+			Album a = new Album(this.title, this.year);
+			album.addAlbum(a, idArtist);
+		}
+		albumsList = album.showAlbumsByArtist(idArtist);
 	}
 
 	// Getters & setters
@@ -105,11 +108,11 @@ public class AlbumManagedBean
 		this.year = year;
 	}
 
-	public List<Album> getAlbumsList() {
+	public Set<Album> getAlbumsList() {
 		return albumsList;
 	}
 
-	public void setAlbumsList(List<Album> albumsList) {
+	public void setAlbumsList(Set<Album> albumsList) {
 		this.albumsList = albumsList;
 	}
 

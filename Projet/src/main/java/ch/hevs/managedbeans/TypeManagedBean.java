@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.util.TypeLiteral;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -30,6 +31,15 @@ public class TypeManagedBean {
 		this.typeDescriptions = new ArrayList<String>();
 		for (Type type : typesList) {
 			this.typeDescriptions.add(type.getDescription());
+		}
+	}
+	
+	// Add a type
+	public void addType() {
+		if(!type.exist(this.typeDescription)) {
+			Type t = new Type(this.typeDescription);
+			type.addType(t);
+			typesList = type.getTypes();
 		}
 	}
 	

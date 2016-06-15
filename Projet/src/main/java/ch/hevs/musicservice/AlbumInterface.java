@@ -11,8 +11,11 @@ import ch.hevs.businessobject.Song;
 
 @Local
 public interface AlbumInterface {
-	
+	/* Supprimer si plus utilisée
 	List<Album> showAlbumsByArtist(long id_artist);
+	*/
+	
+	Set<Album> showAlbumsByArtist(long id_artist);
 	
 	public void addAlbum(Album album, long idArtist);
 	

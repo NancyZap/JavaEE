@@ -5,13 +5,18 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import ch.hevs.businessobject.Album;
+import ch.hevs.businessobject.Artist;
 import ch.hevs.businessobject.Type;
+import ch.hevs.exception.MusicException;
 
 @Stateful
 public class TypeBean implements TypeInterface {
@@ -27,6 +32,11 @@ public class TypeBean implements TypeInterface {
 		List<Type> list = query.getResultList();
 		return list;
 	}
+	
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public void addType(Type type) throws MusicException {
+		em.persist(type);
+	}
 
 	@Override
 	public void deleteType(long id_type) {
@@ -38,6 +48,19 @@ public class TypeBean implements TypeInterface {
 		
 		em.remove(type);
 		
+	}
+
+	@Override
+	public boolean exist(String description) {
+
+		TypedQuery query = em.createQuery("SELECT t FROM Type t WHERE t.description=:description", Type.class);
+		query.setParameter("description", description);
+		try{
+			Type type = (Type) query.getSingleResult();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 
 }

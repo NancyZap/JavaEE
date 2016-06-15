@@ -53,8 +53,6 @@ public class ArtistBean implements ArtistInterface {
 
 		Artist artist = (Artist) query.getSingleResult();
 		
-		//Impossible de caster comme ça
-		//List<Album> albumsList = (List<Album>) artist.getAlbums();
 		Set<Album> albumsList = artist.getAlbums();
 		
 

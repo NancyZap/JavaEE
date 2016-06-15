@@ -55,10 +55,10 @@ public class ArtistManagedBean
 		{
 			albumsList = artist.showArtistAlbums(id_artist);
 			FacesContext fc = FacesContext.getCurrentInstance();
-		    Map<String,String> params = 
-		    fc.getExternalContext().getRequestParameterMap();
-		    artistName =  params.get("artistN"); 
-		    artistId = Long.valueOf(params.get("artistId")).longValue();
+			Map<String,String> params = 
+					fc.getExternalContext().getRequestParameterMap();
+			artistName =  params.get("artistN"); 
+			artistId = Long.valueOf(params.get("artistId")).longValue();
 			return "yes";
 		}
 		catch(Exception e)
@@ -66,13 +66,18 @@ public class ArtistManagedBean
 			return "no";
 		}
 	}
-	
+
 
 	// Add artist
 	public void addArtist() {
 		if(!artist.exist(this.artistName)){
-		Artist a = new Artist(this.artistName, this.band);
-		artist.addArtist(a);}
+			Artist a = new Artist(this.artistName, this.band);
+			artist.addArtist(a);
+		}
+		// Refresh artistsList
+		artistsList = artist.getArtists();
+		// clear the add fields
+		artistName = "";
 	}
 
 	// Getters & setters
@@ -83,7 +88,7 @@ public class ArtistManagedBean
 	public void setArtistId(long artistId) {
 		this.artistId = artistId;
 	}
-	
+
 	public boolean isBand() {
 		return band;
 	}
@@ -91,7 +96,7 @@ public class ArtistManagedBean
 	public void setBand(boolean band) {
 		this.band = band;
 	}
-	
+
 	public String getArtistName() {
 		return artistName;
 	}
