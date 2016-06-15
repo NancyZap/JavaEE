@@ -39,7 +39,7 @@
 		<display-name>artists.xhtml</display-name>
 		<from-view-id>/artists.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{artistManagedBean.showArtistAlbums(a.id)}</from-action>
+			<from-action>#{albumManagedBean.showArtistAlbums(a.id)}</from-action>
 			<from-outcome>yes</from-outcome>
 			<to-view-id>/albums.xhtml</to-view-id>
 			<redirect />
@@ -49,7 +49,7 @@
 		<display-name>artists.xhtml</display-name>
 		<from-view-id>/artists.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{artistManagedBean.showArtistAlbums(a.id)}</from-action>
+			<from-action>#{albumManagedBean.showArtistAlbums(a.id)}</from-action>
 			<from-outcome>no</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
 			<redirect />
@@ -83,6 +83,22 @@
 		<navigation-case>
 			<from-outcome>lookTypes</from-outcome>
 			<to-view-id>/types.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>welcome.xhtml</display-name>
+		<from-view-id>/welcome.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>lookAbout</from-outcome>
+			<to-view-id>/about.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>about.xhtml</display-name>
+		<from-view-id>/about.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>lookWelcome</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

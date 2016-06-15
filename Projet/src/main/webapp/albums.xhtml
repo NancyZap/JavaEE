@@ -2,106 +2,100 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-    <ui:define name="content">
-    	<div class="container">
+	<ui:define name="content">
+		<div class="container">
 			<h:form id="formShowArtistAlbums">
 
 				<h1>
-					Albums de
-					<h:outputText value="#{artistManagedBean.artistName}" />
+					Albums :
+					<h:outputText value="#{albumManagedBean.artistName}" />
 				</h1>
 
 			</h:form>
 
 		</div>
-		
+
 		<div class="container">
-		<h:form>
-			<h:dataTable class="table table-striped"
-				value="#{artistManagedBean.albumsList}" var="al">
+			<h:form>
+				<h:dataTable class="table table-striped"
+					value="#{albumManagedBean.albumsList}" var="al">
 
-				<h:column>
-					<f:facet name="header">Titre</f:facet>
-					<h:outputText value="#{al.title}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">Title</f:facet>
+						<h:outputText value="#{al.title}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Année</f:facet>
-					<h:outputText value="#{al.year}" />
-				</h:column>
-								
-				<h:column>
-						
-					<f:facet name="header">Consult</f:facet>
-						<h:commandLink
-							action="#{albumManagedBean.showAlbumSongs(al.id)}"
+					<h:column>
+						<f:facet name="header">Year</f:facet>
+						<h:outputText value="#{al.year}" />
+					</h:column>
+
+					<h:column>
+
+						<f:facet name="header">Consult</f:facet>
+						<h:commandLink action="#{albumManagedBean.showAlbumSongs(al.id)}"
 							styleClass="btn btn-success">
 							<span class="glyphicon glyphicon-eye-open block-right"></span>
 						</h:commandLink>
 
-				  </h:column>
-				  
-				  <h:column>
-				  <f:facet name="header">Delete</f:facet>
-					<h:commandLink
-					    action="#{managerManagedBean.deleteManager(s.id)}"
-					    styleClass="btn btn-danger">
-					    <span class="glyphicon glyphicon-remove"></span>
-					</h:commandLink>
-				  </h:column>
+					</h:column>
 
-			</h:dataTable>
-		</h:form>
-    
-    </div>
-    
-    <div class="container">
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandLink action="#{managerManagedBean.deleteManager(s.id)}"
+							styleClass="btn btn-danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</h:commandLink>
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+
+		</div>
+
+		<div class="container">
 			<h1>Add an album</h1>
 			<h:form id="formAddArtist">
 				<table class="table">
 					<tr>
 						<td align="right"><b>Title</b></td>
-						<td>
-							<h:inputText id="title" class="form-control"
+						<td><h:inputText id="title" class="form-control"
 								value="#{albumManagedBean.title}" required="true"
-								requiredMessage="Put a title"></h:inputText>
-						</td>
+								requiredMessage="Put a title"></h:inputText></td>
 					</tr>
 
 					<tr>
 						<td align="right"><b>Year</b></td>
-						<td>
-							<h:inputText id="year" class="form-control"
+						<td><h:inputText id="year" class="form-control"
 								value="#{albumManagedBean.year}" required="true"
-								requiredMessage="Put a year"></h:inputText>
-						</td>
+								requiredMessage="Put a year"></h:inputText></td>
 
 					</tr>
-					
-						<tr>
+
+					<tr>
 						<td align="right"><b>Type</b></td>
-						<td>
-	        				<h:selectOneMenu value="#{typeManagedBean.typeDescription}">
-	        					<f:selectItems value="#{typeManagedBean.typeDescriptions}"/>
-	        				</h:selectOneMenu>	
-						</td>
+						<td><h:selectOneMenu
+								value="#{typeManagedBean.typeDescription}">
+								<f:selectItems value="#{typeManagedBean.typeDescriptions}" />
+							</h:selectOneMenu></td>
 
 					</tr>
 
 				</table>
-				<h:commandLink action="#{albumManagedBean.addAlbum(artistManagedBean.artistId)}"
+				<h:commandLink
+					action="#{albumManagedBean.addAlbum(albumManagedBean.artistId)}"
 					styleClass="btn btn-success center-block">
 					<span class="glyphicon glyphicon-plus"></span>
 				</h:commandLink>
 			</h:form>
 			<br></br> <br></br> <br></br> <br></br>
 		</div>
-    
-    </ui:define>
+
+	</ui:define>
 </ui:composition>
 </html>

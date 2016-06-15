@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center">
+			<h:outputLabel value="About us"></h:outputLabel>
+		</h1>
+		<p></p>
+		<h3><h:outputLabel value="This application was created by :"></h:outputLabel></h3>
+		<h4><h:outputLabel value="- Nancy Zappellaz"></h:outputLabel></h4>
+		<h4><h:outputLabel value="- Elsio Violante Coelho"></h:outputLabel></h4>
+		<div class="container">
+			<!-- Picture from www.epinay-construction.com -->
+			<img src="img/hevs.jpg" height="398" width="800"/>
+		</div>
+		<h4><h:outputLabel value="All the work has been accomplished for the course 635-1 - Java EE with the help of Pr. Dr. Adrien Depeursinge"></h:outputLabel></h4>
+		<br></br>
+		<h:form>
+			
+			<h:commandLink action="lookWelcome">
+				<button type="button" class="btn btn-success text-center center-block">
+					<h:outputText value="Back to home" />
+				</button>
+			</h:commandLink>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

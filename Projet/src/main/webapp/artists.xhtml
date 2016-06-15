@@ -29,7 +29,7 @@
 					<h:column>
 						<f:facet name="header">Consult</f:facet>
 						<h:commandLink
-							action="#{artistManagedBean.showArtistAlbums(a.id)}"
+							action="#{albumManagedBean.showArtistAlbums(a.id)}"
 							styleClass="btn btn-success">
 							<f:param name="artistN" value="#{a.name}" />
 							<f:param name="artistId" value="#{a.id}" />
@@ -41,7 +41,7 @@
 					<h:column>
 						<f:facet name="header">Delete</f:facet>
 						<h:commandLink
-							action="#{artistManagedBean.showArtistAlbums(a.id)}"
+							action="#{albumManagedBean.showArtistAlbums(a.id)}"
 							styleClass="btn btn-danger">
 							<span class="glyphicon glyphicon-remove block-right"></span>
 						</h:commandLink>

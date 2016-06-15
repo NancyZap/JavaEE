@@ -2,9 +2,11 @@ package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import ch.hevs.businessobject.Album;
@@ -25,6 +27,9 @@ public class AlbumManagedBean
 
 	// TODO: Supprimer si pas utilisé
 	//private List<Album> albumsList;
+	
+	private String artistName;
+	private long artistId;
 	
 	private Set<Album> albumsList;
 
@@ -57,13 +62,19 @@ public class AlbumManagedBean
 
 
 	// TODO: Méthode à supprimer si pas utilisée
-	/*
+	
 	// Show the albums of an artist
 	public String showArtistAlbums(long id_artist)
 	{
 		try
 		{
 			albumsList = album.showAlbumsByArtist(id_artist);
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String,String> params = 
+					fc.getExternalContext().getRequestParameterMap();
+			artistName =  params.get("artistN"); 
+			artistId = Long.valueOf(params.get("artistId")).longValue();
+			
 			return "yes";
 		}
 		catch(Exception e)
@@ -71,7 +82,7 @@ public class AlbumManagedBean
 			return "no";
 		}
 	}
-	 */
+	
 
 	public Set<Song> getSongsList() {
 		return songsList;
@@ -123,6 +134,24 @@ public class AlbumManagedBean
 	public void setAlbum(AlbumInterface album) {
 		this.album = album;
 	}
+
+	public String getArtistName() {
+		return artistName;
+	}
+
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
+	}
+
+	public long getArtistId() {
+		return artistId;
+	}
+
+	public void setArtistId(long artistId) {
+		this.artistId = artistId;
+	}
+	
+	
 
 
 } 
