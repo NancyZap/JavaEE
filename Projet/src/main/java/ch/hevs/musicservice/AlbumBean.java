@@ -29,18 +29,6 @@ public class AlbumBean implements AlbumInterface {
 	@PersistenceContext(name = "musicPU", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
-	/* Supprimer si plus utilisée
-	@Override
-	public List<Album> showAlbumsByArtist(long id_artist) {
-		Query query = em.createQuery("SELECT alb FROM Artist art, IN(art.albums) alb where art.id=:id");
-		query.setParameter("id", id_artist);
-		
-		List<Album> listAlbumsByArtist = (List<Album>) query.getResultList();
-		
-		return listAlbumsByArtist;
-	}
-	*/
-	
 	@Override
 	public Set<Album> showAlbumsByArtist(long id_artist) {
 		Query query = em.createQuery("SELECT art FROM Artist art WHERE art.id=:id");
@@ -50,7 +38,6 @@ public class AlbumBean implements AlbumInterface {
 		
 		Set<Album> albumsList = artist.getAlbums();
 		
-
 		return albumsList;
 	}
 

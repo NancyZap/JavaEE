@@ -26,15 +26,6 @@
 						<h:outputText value="#{t.description}" />
 					</h:column>
 
-					<h:column>
-						<f:facet name="header">Delete</f:facet>
-						<h:commandLink action="#{typeManagedBean.deleteType(t.id)}"
-							styleClass="btn btn-danger">
-							<span class="glyphicon glyphicon-remove block-right"></span>
-						</h:commandLink>
-
-					</h:column>
-
 				</h:dataTable>
 			</h:form>
 
