@@ -19,7 +19,7 @@ public interface AlbumInterface {
 	
 	public void addAlbum(Album album, long idArtist);
 	
-	public boolean exist(String name);
+	public boolean exist(String title);
 
 	public Set<Song> showAlbumSongs(long id_album);
 	

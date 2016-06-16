@@ -2,81 +2,85 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-    <ui:define name="content">
-    	<div class="container">
+	<ui:define name="content">
+		<div class="container">
 			<h:form id="formShowAlbumSongs">
 
-				<h1>
-					Songs of
-					<h:outputText value=" #{artistManagedBean.chosenArtist.name}" />
-				</h1>
-
-				<div class="well well-lg">
-					<table class="table">
-						<tr>
-							<td><b>Nom</b></td>
-							<td><h:inputText id="title" class="form-control"
-									value="#{artistManagedBean.albumsList}"/></td>
-						</tr>
-
-						
-					</table>
-
-				</div>
-			</h:form>
-
-		</div>
-		
-		<div class="container">
-		<h:form>
-			<h:dataTable class="table table-striped"
-				value="#{albumManagedBean.songsList}" var="so">
-
-				<h:column>
-					<f:facet name="header">Titre</f:facet>
-					<h:outputText value="#{so.title}" />
-				</h:column>
-				  
-				  <h:column>
-				  <f:facet name="header">Delete</f:facet>
-					<h:commandLink
-					    action="#{managerManagedBean.deleteManager(s.id)}"
-					    styleClass="btn btn-danger">
-					    <span class="glyphicon glyphicon-remove"></span>
-					</h:commandLink>
-				  </h:column>
-
-			</h:dataTable>
-		</h:form>
-    
-    </div>
-    
-    <div class="container">
-			<h1>Add a song</h1>
-			<h:form id="formAddSong">
-				<table class="table">
+				<table>
 					<tr>
-						<td align="right"><b>Title</b></td>
 						<td>
-							<h:inputText id="title" class="form-control"
-								value="#{artistManagedBean.artistName}" />
+							<!-- Icon made by Appzgear from www.flaticon.com  --> <img
+							src="img/song-playlist.png" height="64" width="64" />
+						</td>
+						<td>
+							<h1>
+								Songs from the album
+								<h:outputText value=" #{songManagedBean.albumName}" />
+							</h1>
 						</td>
 					</tr>
-
 				</table>
-				<h:commandLink action="#{songManagedBean.addSong()}"
-					styleClass="btn btn-success center-block">
-					<span class="glyphicon glyphicon-plus"></span>
-				</h:commandLink>
+
 			</h:form>
-			<br></br> <br></br> <br></br> <br></br>
+
 		</div>
-    
-    </ui:define>
+
+		<div class="container">
+			<h:form>
+				<h:dataTable class="table table-condensed"
+					value="#{songManagedBean.songsList}" var="so">
+
+					<h:column>
+						<f:facet name="header">Song title</f:facet>
+						<h:outputText value="#{so.title}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandLink action="#{managerManagedBean.deleteManager(s.id)}"
+							styleClass="btn btn-danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</h:commandLink>
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+
+		</div>
+
+		<hr />
+
+		<div class="container">
+			<div class="col-sm-8">
+				<h1>Add a song</h1>
+				<h:form id="formAddSong">
+					<table class="table">
+						<tr>
+							<td align="left"><b>Title</b></td>
+							<td><h:inputText id="title" class="form-control"
+									value="#{songManagedBean.title}" required="true"
+									requiredMessage="Put a title"></h:inputText></td>
+							<td align="right"><h:commandLink
+									action="#{songManagedBean.addSong(songManagedBean.albumId)}"
+									styleClass="btn btn-success">
+									<span class="glyphicon glyphicon-plus"></span>
+								</h:commandLink></td>
+						</tr>
+
+					</table>
+
+				</h:form>
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+
+	</ui:define>
 </ui:composition>
 </html>

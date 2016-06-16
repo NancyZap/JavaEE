@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Projet/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="554" y="562" id="pf14656382650353" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf14656382650354 pf14660004275710 pf14660094673052" inlinks="pf14658166303304 pf14659232017270 pf14660099458234" path="/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="554" y="562" id="pf14656382650353" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf14656382650354 pf14660004275710 pf14660094673052" inlinks="pf14658166303304 pf14659232017270 pf14660099458234" path="/welcome.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="artists.xhtml" x="122" y="558" id="pf14656382650355" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14658166303305 pf14658166303304" inlinks="pf14656382650354" path="/artists.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="albums.xhtml" x="338" y="356" id="pf14656382650356" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14659232017281 pf14659232017270" inlinks="pf14658166303305" path="/albums.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="songs.xhtml" x="554" y="178" id="pf14658874493880" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14659232017281" path="/songs.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="types.xhtml" x="672" y="408" id="pf14660004275721" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf14660004275710" path="/types.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="about.xhtml" x="768" y="562" id="pf14660094673053" outlinks="pf14660099458234" inlinks="pf14660094673052" path="/about.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="about.xhtml" x="768" y="562" id="pf14660094673053" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf14660099458234" inlinks="pf14660094673052" path="/about.xhtml"/>
   <links id="pf14656382650354" target="pf14656382650355" source="pf14656382650353" outcome="lookArtist"/>
   <links id="pf14658166303305" target="pf14656382650356" source="pf14656382650355" outcome="yes" redirect="true" fromaction="#{albumManagedBean.showArtistAlbums(a.id)}"/>
   <links id="pf14658166303304" target="pf14656382650353" source="pf14656382650355" outcome="no" redirect="true" fromaction="#{albumManagedBean.showArtistAlbums(a.id)}"/>
-  <links id="pf14659232017281" target="pf14658874493880" source="pf14656382650356" outcome="yes" redirect="true" fromaction="#{albumManagedBean.showAlbumSongs(al.id)}"/>
-  <links id="pf14659232017270" target="pf14656382650353" source="pf14656382650356" outcome="no" redirect="true" fromaction="#{albumManagedBean.showAlbumSongs(al.id)}"/>
+  <links id="pf14659232017281" target="pf14658874493880" source="pf14656382650356" outcome="yes" redirect="true" fromaction="#{songManagedBean.showAlbumSongs(al.id)}"/>
+  <links id="pf14659232017270" target="pf14656382650353" source="pf14656382650356" outcome="no" redirect="true" fromaction="#{songManagedBean.showAlbumSongs(al.id)}"/>
   <links id="pf14660004275710" target="pf14660004275721" source="pf14656382650353" outcome="lookTypes"/>
   <links id="pf14660094673052" target="pf14660094673053" source="pf14656382650353" outcome="lookAbout"/>
   <links id="pf14660099458234" target="pf14656382650353" source="pf14660094673053" outcome="lookWelcome"/>

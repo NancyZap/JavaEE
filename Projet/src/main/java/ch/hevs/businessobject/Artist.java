@@ -73,8 +73,5 @@ public class Artist {
 	public void addAlbums(Album a) {
 		albums.add(a);
 		a.addArtists(this);
-	}
-
-	
-	
+	}	
 }

@@ -1,6 +1,7 @@
 package ch.hevs.musicservice;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Local;
 
@@ -11,7 +12,11 @@ import ch.hevs.businessobject.Song;
 @Local
 public interface SongInterface {
 
-	List<Song> showSongsByAlbum(long id_album);
+	Set<Song> showSongsByAlbum(long id_album);
+	
+	public boolean exist(String title);
+	
+	public void addSong(Song song, long idAlbum);
 	
 	//TODO: EVERYTHING ELSE
 }

@@ -2,8 +2,11 @@ package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -21,7 +24,13 @@ import ch.hevs.musicservice.SongInterface;
 
 public class SongManagedBean
 {
-	private List<Song> songsList;
+	
+	private String title;
+	
+	private String albumName;
+	private long albumId;
+	
+	private Set<Song> songsList;
 	private SongInterface song;
 
 	@PostConstruct
@@ -39,6 +48,10 @@ public class SongManagedBean
 		try
 		{
 			songsList = song.showSongsByAlbum(id_album);
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+			albumName =  params.get("albumN"); 
+			albumId = Long.valueOf(params.get("albumId")).longValue();
 			return "yes";
 		}
 		catch(Exception e)
@@ -47,19 +60,21 @@ public class SongManagedBean
 		}
 	}
 
-	// Add song
-	// TODO: faire la méthode d'ajout de songs
-	public String addSong() {
-		return null;
+	// Add song	
+	public void addSong(long idAlbum) {
+		if(!song.exist(this.title)){
+			Song s = new Song(this.title);
+			song.addSong(s, idAlbum);
+		}
+		songsList = song.showSongsByAlbum(idAlbum);
 	}
 
-	// Getters & setters
-	
-	public List<Song> getSongsList() {
+	// Getters & setters	
+	public Set<Song> getSongsList() {
 		return songsList;
 	}
 
-	public void setSongsList(List<Song> songsList) {
+	public void setSongsList(Set<Song> songsList) {
 		this.songsList = songsList;
 	}
 
@@ -70,6 +85,32 @@ public class SongManagedBean
 	public void setSong(SongInterface song) {
 		this.song = song;
 	}
+
+	public String getAlbumName() {
+		return albumName;
+	}
+
+	public void setAlbumName(String albumName) {
+		this.albumName = albumName;
+	}
+
+	public long getAlbumId() {
+		return albumId;
+	}
+
+	public void setAlbumId(long albumId) {
+		this.albumId = albumId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 
 	//TODO: EVERYTHING ELSE
 

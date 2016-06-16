@@ -8,7 +8,7 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-	
+
 		<h:form>
 			<h1 class="text-center">
 				<h:outputLabel value="Music types"></h:outputLabel>
@@ -18,7 +18,7 @@
 
 		<div class="container">
 			<h:form>
-				<h:dataTable class="table table-striped"
+				<h:dataTable class="table table-condensed"
 					value="#{typeManagedBean.typesList}" var="t">
 
 					<h:column>
@@ -39,25 +39,33 @@
 			</h:form>
 
 		</div>
+		
+		<hr/>
 
 		<div class="container">
-			<h1>Add a type</h1>
-			<h:form id="formAddType">
-				<table class="table">
-					<tr>
-						<td align="right"><b>Description</b></td>
-						<td><h:inputText id="name" class="form-control"
-								value="#{typeManagedBean.typeDescription}" /></td>
-					</tr>
+			<div class="col-sm-8">
+				<h1>Add a type</h1>
+				<h:form id="formAddType">
+					<table class="table">
+						<tr>
+							<td align="left"><b>Type</b></td>
+							<td><h:inputText id="name" class="form-control"
+									value="#{typeManagedBean.typeDescription}" /></td>
+							<td align="right"><h:commandLink action="#{typeManagedBean.addType()}"
+									styleClass="btn btn-success" onchange="submit();">
+									<span class="glyphicon glyphicon-plus"></span>
+								</h:commandLink></td>
+						</tr>
 
-				</table>
-				<h:commandLink action="#{typeManagedBean.addType()}"
-					styleClass="btn btn-success center-block" onchange="submit();">
-					<span class="glyphicon glyphicon-plus"></span>
-				</h:commandLink>
-			</h:form>
-			<br></br> <br></br> <br></br> <br></br>
+					</table>
+
+				</h:form>
+			</div>
 		</div>
+
+		<br />
+		<br />
+		<br />
 
 	</ui:define>
 </ui:composition>

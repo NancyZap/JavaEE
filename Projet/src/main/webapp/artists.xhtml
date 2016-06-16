@@ -8,7 +8,7 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-	
+
 		<h:form>
 			<h1 class="text-center">
 				<h:outputLabel value="My artists"></h:outputLabel>
@@ -27,9 +27,8 @@
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Consult</f:facet>
-						<h:commandLink
-							action="#{albumManagedBean.showArtistAlbums(a.id)}"
+						<f:facet name="header"></f:facet>
+						<h:commandLink action="#{albumManagedBean.showArtistAlbums(a.id)}"
 							styleClass="btn btn-success">
 							<f:param name="artistN" value="#{a.name}" />
 							<f:param name="artistId" value="#{a.id}" />
@@ -39,9 +38,8 @@
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Delete</f:facet>
-						<h:commandLink
-							action="#{albumManagedBean.showArtistAlbums(a.id)}"
+						<f:facet name="header"></f:facet>
+						<h:commandLink action="#{albumManagedBean.showArtistAlbums(a.id)}"
 							styleClass="btn btn-danger">
 							<span class="glyphicon glyphicon-remove block-right"></span>
 						</h:commandLink>
@@ -50,35 +48,45 @@
 
 				</h:dataTable>
 			</h:form>
-
 		</div>
+
+		<hr />
 
 		<div class="container">
-			<h1>Add an artist</h1>
-			<h:form id="formAddArtist">
-				<table class="table">
-					<tr>
-						<td align="right"><b>Name</b></td>
-						<td><h:inputText id="name" class="form-control"
-								value="#{artistManagedBean.artistName}" /></td>
-					</tr>
+			<div class="col-sm-10">
+				<h1>Add an artist</h1>
+				<h:form id="formAddArtist">
+					<table class="table">
+						<tr>
+							<td align="left"><b>Name</b></td>
+							<td><h:inputText id="name" class="form-control"
+									value="#{artistManagedBean.artistName}" /></td>
+						</tr>
 
-					<tr>
-						<td align="right"><b>Band</b></td>
-						<td><h:selectBooleanCheckbox
-								value="#{artistManagedBean.band}">
-							</h:selectBooleanCheckbox></td>
+						<tr>
+							<td align="left"><b>Band</b></td>
+							<td><h:selectBooleanCheckbox
+									value="#{artistManagedBean.band}">
+								</h:selectBooleanCheckbox></td>
 
-					</tr>
+						</tr>
+						<tr>
+							<td></td>
+							<td align="right"><h:commandLink
+									action="#{artistManagedBean.addArtist()}"
+									styleClass="btn btn-success" onchange="submit();">
+									<span class="glyphicon glyphicon-plus"></span>
+								</h:commandLink></td>
+						</tr>
+					</table>
 
-				</table>
-				<h:commandLink action="#{artistManagedBean.addArtist()}"
-					styleClass="btn btn-success center-block" onchange="submit();">
-					<span class="glyphicon glyphicon-plus"></span>
-				</h:commandLink>
-			</h:form>
-			<br></br> <br></br> <br></br> <br></br>
+				</h:form>
+			</div>
 		</div>
+
+		<br />
+		<br />
+		<br />
 
 	</ui:define>
 </ui:composition>

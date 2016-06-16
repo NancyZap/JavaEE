@@ -58,10 +58,6 @@ public class AlbumManagedBean
 			return "no";
 		}
 	}
-
-
-
-	// TODO: Méthode à supprimer si pas utilisée
 	
 	// Show the albums of an artist
 	public String showArtistAlbums(long id_artist)
@@ -70,8 +66,7 @@ public class AlbumManagedBean
 		{
 			albumsList = album.showAlbumsByArtist(id_artist);
 			FacesContext fc = FacesContext.getCurrentInstance();
-			Map<String,String> params = 
-					fc.getExternalContext().getRequestParameterMap();
+			Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
 			artistName =  params.get("artistN"); 
 			artistId = Long.valueOf(params.get("artistId")).longValue();
 			

@@ -10,11 +10,21 @@
 	<ui:define name="content">
 		<div class="container">
 			<h:form id="formShowArtistAlbums">
+				<table>
+					<tr>
+						<td>
+							<!-- Icon made by Freepik from www.flaticon.com  --> <img
+							src="img/music-album.png" height="64" width="64" />
+						</td>
+						<td>
+							<h1>
+								<h:outputText value=" #{albumManagedBean.artistName}" />
+							</h1>
+						</td>
+					</tr>
+				</table>
 
-				<h1>
-					Albums :
-					<h:outputText value="#{albumManagedBean.artistName}" />
-				</h1>
+
 
 			</h:form>
 
@@ -26,7 +36,7 @@
 					value="#{albumManagedBean.albumsList}" var="al">
 
 					<h:column>
-						<f:facet name="header">Title</f:facet>
+						<f:facet name="header">Album</f:facet>
 						<h:outputText value="#{al.title}" />
 					</h:column>
 
@@ -37,16 +47,18 @@
 
 					<h:column>
 
-						<f:facet name="header">Consult</f:facet>
-						<h:commandLink action="#{albumManagedBean.showAlbumSongs(al.id)}"
+						<f:facet name="header"></f:facet>
+						<h:commandLink action="#{songManagedBean.showAlbumSongs(al.id)}"
 							styleClass="btn btn-success">
+							<f:param name="albumN" value="#{al.title}" />
+							<f:param name="albumId" value="#{al.id}" />
 							<span class="glyphicon glyphicon-eye-open block-right"></span>
 						</h:commandLink>
 
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Delete</f:facet>
+						<f:facet name="header"></f:facet>
 						<h:commandLink action="#{managerManagedBean.deleteManager(s.id)}"
 							styleClass="btn btn-danger">
 							<span class="glyphicon glyphicon-remove"></span>
@@ -57,44 +69,53 @@
 			</h:form>
 
 		</div>
-
+		<hr />
 		<div class="container">
-			<h1>Add an album</h1>
-			<h:form id="formAddArtist">
-				<table class="table">
-					<tr>
-						<td align="right"><b>Title</b></td>
-						<td><h:inputText id="title" class="form-control"
-								value="#{albumManagedBean.title}" required="true"
-								requiredMessage="Put a title"></h:inputText></td>
-					</tr>
+			<div class="col-sm-10">
+				<h1>Add an album</h1>
+				<h:form id="formAddArtist">
+					<table class="table">
+						<tr>
+							<td align="left"><b>Title</b></td>
+							<td><h:inputText id="title" class="form-control"
+									value="#{albumManagedBean.title}" required="true"
+									requiredMessage="Put a title"></h:inputText></td>
+						</tr>
 
-					<tr>
-						<td align="right"><b>Year</b></td>
-						<td><h:inputText id="year" class="form-control"
-								value="#{albumManagedBean.year}" required="true"
-								requiredMessage="Put a year"></h:inputText></td>
+						<tr>
+							<td align="left"><b>Year</b></td>
+							<td><h:inputText id="year" class="form-control"
+									value="#{albumManagedBean.year}" required="true"
+									requiredMessage="Put a year"></h:inputText></td>
 
-					</tr>
+						</tr>
 
-					<tr>
-						<td align="right"><b>Type</b></td>
-						<td><h:selectOneMenu
-								value="#{typeManagedBean.typeDescription}">
-								<f:selectItems value="#{typeManagedBean.typeDescriptions}" />
-							</h:selectOneMenu></td>
+						<tr>
+							<td align="left"><b>Type</b></td>
+							<td><h:selectOneMenu
+									value="#{typeManagedBean.typeDescription}">
+									<f:selectItems value="#{typeManagedBean.typeDescriptions}" />
+								</h:selectOneMenu></td>
 
-					</tr>
+						</tr>
+						<tr>
+							<td></td>
+							<td align="right"><h:commandLink
+									action="#{albumManagedBean.addAlbum(albumManagedBean.artistId)}"
+									styleClass="btn btn-success">
+									<span class="glyphicon glyphicon-plus"></span>
+								</h:commandLink></td>
+						</tr>
 
-				</table>
-				<h:commandLink
-					action="#{albumManagedBean.addAlbum(albumManagedBean.artistId)}"
-					styleClass="btn btn-success center-block">
-					<span class="glyphicon glyphicon-plus"></span>
-				</h:commandLink>
-			</h:form>
-			<br></br> <br></br> <br></br> <br></br>
+					</table>
+
+				</h:form>
+			</div>
 		</div>
+
+		<br />
+		<br />
+		<br />
 
 	</ui:define>
 </ui:composition>

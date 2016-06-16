@@ -61,7 +61,7 @@
 		<display-name>albums.xhtml</display-name>
 		<from-view-id>/albums.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{albumManagedBean.showAlbumSongs(al.id)}</from-action>
+			<from-action>#{songManagedBean.showAlbumSongs(al.id)}</from-action>
 			<from-outcome>yes</from-outcome>
 			<to-view-id>/songs.xhtml</to-view-id>
 			<redirect />
@@ -71,7 +71,7 @@
 		<display-name>albums.xhtml</display-name>
 		<from-view-id>/albums.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{albumManagedBean.showAlbumSongs(al.id)}</from-action>
+			<from-action>#{songManagedBean.showAlbumSongs(al.id)}</from-action>
 			<from-outcome>no</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
 			<redirect />
