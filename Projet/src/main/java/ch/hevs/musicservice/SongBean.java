@@ -60,6 +60,8 @@ public class SongBean implements SongInterface {
 		
 		Album alb = (Album) query.getSingleResult();
 		
+		alb.addSongs(song);
+		
 		em.persist(song);
 		
 	}
