@@ -90,6 +90,19 @@ public class QueryTest {
 			Artist a2 = new Artist("Twenty One Pilots", true);
 			Artist a3 = new Artist ("Lana Del Rey", false);
 			
+			
+			Type t1 = new Type("Metal");
+			Type t2 = new Type("Jazz");
+			Type t3 = new Type("Blues");
+			Type t4 = new Type("Variété");
+			Type t5 = new Type("Reggae");
+			Type t6 = new Type("Electro");
+			Type t7 = new Type("Pop");
+			Type t8 = new Type("Soul");
+			Type t9 = new Type("Funk");
+			Type t10 = new Type("Indie");
+			Type t11 = new Type("Rap");
+			
 			Album alb1 = new Album("Blurryface", 2015);
 			alb1.addSongs(new Song("Stressed Out"));
 			alb1.addSongs(new Song("Ride"));
@@ -108,20 +121,58 @@ public class QueryTest {
 			alb1.addTypes(new Type("Hip hop alternatif"));
 			alb1.addTypes(new Type("Rock"));
 			
-			Type t1 = new Type("Metal");
-			Type t2 = new Type("Jazz");
-			Type t3 = new Type("Blues");
-			Type t4 = new Type("Variété");
-			Type t5 = new Type("Reggae");
-			Type t6 = new Type("Electro");
-			Type t7 = new Type("Pop");
-			Type t8 = new Type("Soul");
-			Type t9 = new Type("Funk");
-			Type t10 = new Type("Indie");
+			Album alb2 = new Album("Vessel", 2013);
+			alb2.addSongs(new Song("Ode to Sleep"));
+			alb2.addSongs(new Song("Holding On to You"));
+			alb2.addSongs(new Song("Migraine"));
+			alb2.addSongs(new Song("House of Gold"));
+			alb2.addSongs(new Song("Car Radio"));
+			alb2.addSongs(new Song("Semi-Automatic"));
+			alb2.addSongs(new Song("Screen"));
+			alb2.addSongs(new Song("The Run and Go"));
+			alb2.addSongs(new Song("Fake You Out"));
+			alb2.addSongs(new Song("Guns for Hands"));
+			alb2.addSongs(new Song("Trees"));
+			alb2.addSongs(new Song("Truce"));
+	
+			alb2.addTypes(t6);
 			
+			a2.addAlbums(alb2);
 			a2.addAlbums(alb1);
-
-			//em.persist(a);
+			
+			Album alb3 = new Album("Ultraviolence", 2014);
+			alb3.addSongs(new Song("Cruel World"));
+			alb3.addSongs(new Song("Ultraviolence"));
+			alb3.addSongs(new Song("Shades of Cool"));
+			alb3.addSongs(new Song("Brooklyn Baby"));
+			alb3.addSongs(new Song("West Coast"));
+			alb3.addSongs(new Song("Sad Girl"));
+			alb3.addSongs(new Song("Pretty When You Cry"));
+			alb3.addSongs(new Song("Money Power Glory"));
+	
+			alb3.addTypes(t7);
+			alb3.addTypes(t4);
+			
+			a3.addAlbums(alb3);
+			
+			Album alb4 = new Album("The Marshall Mathers LP 2", 2013);
+			alb4.addSongs(new Song("Bad Guy"));
+			alb4.addSongs(new Song("Parking Lot"));
+			alb4.addSongs(new Song("Ryhme Or Reason"));
+			alb4.addSongs(new Song("So Muche Better"));
+			alb4.addSongs(new Song("Survival"));
+			alb4.addSongs(new Song("Legacy"));
+			alb4.addSongs(new Song("Asshole"));
+			alb4.addSongs(new Song("Berzerk"));
+			alb4.addSongs(new Song("Rap God"));
+			alb4.addSongs(new Song("Brainess"));
+			alb4.addSongs(new Song("The Monster"));
+			alb4.addSongs(new Song("So Far..."));
+			
+			alb4.addTypes(t7);
+			
+			a1.addAlbums(alb4);
+			
 			em.persist(a1);
 			em.persist(a2);
 			em.persist(a3);
@@ -136,8 +187,12 @@ public class QueryTest {
 			em.persist(t8);
 			em.persist(t9);
 			em.persist(t10);
+			em.persist(t11);
 			
 			em.persist(alb1);
+			em.persist(alb2);
+			em.persist(alb3);
+			em.persist(alb4);
 	
 			tx.commit();
 
