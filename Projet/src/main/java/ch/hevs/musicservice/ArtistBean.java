@@ -81,13 +81,18 @@ public class ArtistBean implements ArtistInterface {
 
 
 	@Override
-	public void deleteArtist(long id_artist) {
-		Query query = em.createQuery("SELECT art FROM Artist art WHERE art.id=:id");
-		query.setParameter("id", id_artist);
-		
-		Artist artist = (Artist) query.getSingleResult();
-		
-		em.remove(artist);
+	public String deleteArtist(long id_artist) {
+		if(ctx.isCallerInRole("administrator")){
+			Query query = em.createQuery("SELECT art FROM Artist art WHERE art.id=:id");
+			query.setParameter("id", id_artist);
+			
+			Artist artist = (Artist) query.getSingleResult();
+			
+			em.remove(artist);
+			return "";
+		}else{
+			return "You are not allowed to delete an artist!";
+		}
 		
 	}
 

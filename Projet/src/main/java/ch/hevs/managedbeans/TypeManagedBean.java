@@ -42,10 +42,11 @@ public class TypeManagedBean {
 	public void addType() {
 		if(!type.exist(this.typeDescription)) {
 			Type t = new Type(this.typeDescription);
-			type.addType(t);
+			permission = type.addTypeWithPerm(t);
 			typesList = type.getTypes();
 		}
 	}
+	
 	
 	public List<String> getTypesByAlbum(long albId){
 		return type.getTypesByAlbum(albId);

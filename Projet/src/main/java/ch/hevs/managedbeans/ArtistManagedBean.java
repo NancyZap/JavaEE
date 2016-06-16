@@ -72,7 +72,7 @@ public class ArtistManagedBean
 	// Delete an artist
 	public void deleteArtist(long id_artist)
 	{
-		artist.deleteArtist(id_artist);
+		permission = artist.deleteArtist(id_artist);
 		artistsList = artist.getArtists();
 	}
 

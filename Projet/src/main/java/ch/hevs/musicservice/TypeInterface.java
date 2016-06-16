@@ -18,4 +18,6 @@ public interface TypeInterface {
 	public String addTypeToAlbum(Type type, long albId);
 
 	public List<String> getTypesByAlbum(long albId);
+
+	public String addTypeWithPerm(Type t);
 }

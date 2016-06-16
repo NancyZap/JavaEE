@@ -17,8 +17,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hevs.businessobject.Album;
-import ch.hevs.businessobject.Artist;
-import ch.hevs.businessobject.Song;
 import ch.hevs.businessobject.Type;
 import ch.hevs.exception.MusicException;
 
@@ -41,6 +39,16 @@ public class TypeBean implements TypeInterface {
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 	public void addType(Type type) throws MusicException {
 		em.persist(type);
+	}
+	
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public String addTypeWithPerm(Type type) throws MusicException {
+		if(ctx.isCallerInRole("administrator")){
+			em.persist(type);
+			return "";
+		}else{
+			return "You are not allowed to add a type!";
+		}
 	}
 	
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)

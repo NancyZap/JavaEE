@@ -22,6 +22,6 @@ public interface ArtistInterface {
 
 	String addArtistWithPerm(Artist a);
 	
-	public void deleteArtist(long id_artist);
+	public String deleteArtist(long id_artist);
 
 }
