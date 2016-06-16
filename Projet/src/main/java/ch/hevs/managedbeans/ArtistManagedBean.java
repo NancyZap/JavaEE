@@ -23,8 +23,6 @@ public class ArtistManagedBean
 {
 	private List<Artist> artistsList;
 	private List<String> artistNames;
-	// TODO: vérifier si OK 
-	//private List<Album> albumsList;
 	private Set<Album> albumsList;
 	private String artistName;
 	private long artistId;
@@ -69,6 +67,13 @@ public class ArtistManagedBean
 		{
 			return "no";
 		}
+	}
+	
+	// Delete an artist
+	public void deleteArtist(long id_artist)
+	{
+		artist.deleteArtist(id_artist);
+		artistsList = artist.getArtists();
 	}
 
 
@@ -132,15 +137,6 @@ public class ArtistManagedBean
 	public void setChosenArtist(Artist chosenArtist) {
 		this.chosenArtist = chosenArtist;
 	}
-	/*
-	public List<Album> getAlbumsList() {
-		return albumsList;
-	}
-
-	public void setAlbumsList(List<Album> albumsList) {
-		this.albumsList = albumsList;
-	}
-	 */
 
 	public Set<Album> getAlbumsList() {
 		return albumsList;

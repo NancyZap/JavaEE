@@ -20,5 +20,5 @@ public interface SongInterface {
 
 	public String addSongWithPerm(Song s, long idAlbum);
 	
-	//TODO: EVERYTHING ELSE
+	public void deleteSong(long id_song);
 }

@@ -99,7 +99,15 @@ public class SongBean implements SongInterface {
 			return false;
 		}
 	}
-	
-	//TODO: EVERYTHING ELSE
+
+	@Override
+	public void deleteSong(long id_song) {
+		Query query = em.createQuery("SELECT son FROM Song son WHERE son.id=:id");
+		query.setParameter("id", id_song);
+		
+		Song song = (Song) query.getSingleResult();
+		
+		em.remove(song);
+	}
 
 }

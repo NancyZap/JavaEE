@@ -22,7 +22,7 @@ public interface ArtistInterface {
 
 	String addArtistWithPerm(Artist a);
 	
-	//TODO : DELETE METHOD
+	public void deleteArtist(long id_artist);
 	
 	//TODO : UPDATE METHOD
 }

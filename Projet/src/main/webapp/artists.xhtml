@@ -49,9 +49,9 @@
 
 					<h:column>
 						<f:facet name="header"></f:facet>
-						<h:commandLink action="#{albumManagedBean.showArtistAlbums(a.id)}"
+						<h:commandLink action="#{artistManagedBean.deleteArtist(a.id)}"
 							styleClass="btn btn-danger">
-							<span class="glyphicon glyphicon-remove block-right"></span>
+							<span class="glyphicon glyphicon-remove"></span>
 						</h:commandLink>
 
 					</h:column>
@@ -92,7 +92,7 @@
 
 				</h:form>
 			</div>
-			<div class="col-sm-10 text-danger bg-danger" >
+			<div class="col-sm-10 text-danger bg-danger">
 				<h:outputText value="#{artistManagedBean.permission}"></h:outputText>
 			</div>
 		</div>
