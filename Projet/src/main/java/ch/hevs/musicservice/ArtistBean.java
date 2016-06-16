@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -19,6 +20,7 @@ import ch.hevs.businessobject.Album;
 import ch.hevs.businessobject.Artist;
 
 @Stateful
+@RolesAllowed(value = {"visitor", "administrator"})
 public class ArtistBean implements ArtistInterface {
 
 	@Resource
@@ -61,8 +63,20 @@ public class ArtistBean implements ArtistInterface {
 
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 	public void addArtist(Artist artist) {
+		if(ctx.isCallerInRole("administrator")){
+		em.persist(artist);}
+
+	}
+	
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public String addArtistWithPerm(Artist artist) {
+		if(ctx.isCallerInRole("administrator")){
 		em.persist(artist);
-		
+		return "";
+		}else{
+			return "You are not allowed to add an artist.";
+		}
+
 	}
 
 }

@@ -31,6 +31,10 @@ public class ArtistManagedBean
 	private boolean band;
 	private Artist chosenArtist;
 	private ArtistInterface artist;
+	private String permission;
+
+
+
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -72,7 +76,7 @@ public class ArtistManagedBean
 	public void addArtist() {
 		if(!artist.exist(this.artistName)){
 			Artist a = new Artist(this.artistName, this.band);
-			artist.addArtist(a);
+			permission = artist.addArtistWithPerm(a);
 		}
 		// Refresh artistsList
 		artistsList = artist.getArtists();
@@ -81,6 +85,14 @@ public class ArtistManagedBean
 	}
 
 	// Getters & setters
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
+	
 	public long getArtistId() {
 		return artistId;
 	}

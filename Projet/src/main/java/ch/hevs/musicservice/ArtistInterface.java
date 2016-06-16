@@ -19,6 +19,8 @@ public interface ArtistInterface {
 	public boolean exist(String name);
 	
 	public void addArtist(Artist artist);
+
+	String addArtistWithPerm(Artist a);
 	
 	//TODO : DELETE METHOD
 	
