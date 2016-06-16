@@ -63,6 +63,7 @@ public class AlbumBean implements AlbumInterface {
 		
 		em.persist(album);
 		
+		
 	}
 
 	@Override

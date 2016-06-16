@@ -2,12 +2,15 @@ package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.util.TypeLiteral;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import ch.hevs.businessobject.Album;
 import ch.hevs.businessobject.Type;
 import ch.hevs.musicservice.TypeInterface;
 
@@ -18,7 +21,6 @@ public class TypeManagedBean {
 	private String typeDescription;
 	private TypeInterface type;
 	
-
 	@PostConstruct
 	public void initialize() throws NamingException {
 		
@@ -32,6 +34,7 @@ public class TypeManagedBean {
 		for (Type type : typesList) {
 			this.typeDescriptions.add(type.getDescription());
 		}
+
 	}
 	
 	// Add a type
@@ -41,6 +44,16 @@ public class TypeManagedBean {
 			type.addType(t);
 			typesList = type.getTypes();
 		}
+	}
+	
+	public List<String> getTypesByAlbum(long albId){
+		return type.getTypesByAlbum(albId);
+	}
+	
+	public void addTypeToAlbum(long albId){
+		Type t = new Type(this.typeDescription);
+		//if(!type.existInAlbum(t, albId)){
+			type.addTypeToAlbum(t, albId);
 	}
 	
 	// Delete a type
