@@ -61,15 +61,14 @@ public class TypeBean implements TypeInterface {
 	}
 	
 	public boolean existInAlbum(Type type,long albId) {
-		Query query = em.createQuery("SELECT alb FROM Album alb WHERE alb.id=:id");
+
+		Query query = em.createQuery("SELECT t FROM Album alb, IN (alb.types) t WHERE alb.id=:id");
 		query.setParameter("id", albId);
+		List<Type> list = query.getResultList();
 		
-		Album album = (Album) query.getSingleResult();
-		
-		Set<Type> typesList = album.getTypes();
 		String s = type.getDescription();
 		
-		for (Type type1 : typesList) {
+		for (Type type1 : list) {
 			if(type1.getDescription().equals(s)){
 				return true;
 			}
