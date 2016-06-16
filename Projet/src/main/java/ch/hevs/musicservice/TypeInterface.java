@@ -11,9 +11,6 @@ public interface TypeInterface {
 	// Ajouter un type (genre musical)
 	public void addType(Type type);
 	
-	// Supprimer un type (genre musical)
-	public String deleteType(long id_type);
-	
 	public boolean exist(String description);
 	
 	public boolean existInAlbum(Type t, long albId);

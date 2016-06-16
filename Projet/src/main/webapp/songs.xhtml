@@ -40,14 +40,6 @@
 						<h:outputText value="#{so.title}" />
 					</h:column>
 
-					<h:column>
-						<f:facet name="header"></f:facet>
-						<h:commandLink action="#{songManagedBean.deleteSong(so.id)}"
-							styleClass="btn btn-danger">
-							<span class="glyphicon glyphicon-remove"></span>
-						</h:commandLink>
-					</h:column>
-
 				</h:dataTable>
 			</h:form>
 

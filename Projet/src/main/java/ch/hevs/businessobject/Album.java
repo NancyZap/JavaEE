@@ -110,8 +110,7 @@ public class Album {
 	
 	public void addTypes(Type type) {
 		types.add(type);
-		type.addAlbums(this);
-		
+		type.addAlbums(this);	
 	}
 
 }

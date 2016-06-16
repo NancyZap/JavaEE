@@ -12,22 +12,37 @@
 			<h:outputLabel value="About us"></h:outputLabel>
 		</h1>
 		<p></p>
-		<h3><h:outputLabel value="This application was created by :"></h:outputLabel></h3>
-		<h4><h:outputLabel value="- Nancy Zappellaz"></h:outputLabel></h4>
-		<h4><h:outputLabel value="- Elsio Violante Coelho"></h:outputLabel></h4>
-			<!-- Picture from www.epinay-construction.com -->
-			<img src="img/hevs.jpg" height="398" width="800"/>
-		<h4><h:outputLabel value="All the work has been accomplished for the course 635-1 - Java EE with the help of Pr. Dr. Adrien Depeursinge"></h:outputLabel></h4>
+		<h4>
+			<h:outputLabel value="This application was created by :"></h:outputLabel>
+		</h4>
+		<h5>
+			<h:outputLabel value="- Nancy Zappellaz"></h:outputLabel>
+		</h5>
+		<h5>
+			<h:outputLabel value="- Elsio Violante Coelho"></h:outputLabel>
+		</h5>
+		<!-- Picture from www.epinay-construction.com -->
+		<img src="img/hevs.jpg" height="398" width="800" />
+		<h5>
+			<h:outputLabel
+				value="All the work has been accomplished for the course 635-1 - Java EE with the help of Pr. Dr. Adrien Depeursinge"></h:outputLabel>
+		</h5>
 		<br></br>
 		<h:form>
-			
+
 			<h:commandLink action="lookWelcome">
-				<button type="button" class="btn btn-success text-center center-block">
+				<button type="button"
+					class="btn btn-success text-center center-block">
 					<h:outputText value="Back to home" />
 				</button>
 			</h:commandLink>
-			
+
 		</h:form>
+
+		<br />
+		<br />
+		<br />
+
 	</ui:define>
 </ui:composition>
 </html>

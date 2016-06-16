@@ -72,19 +72,21 @@ public class SongManagedBean
 		songsList = song.showSongsByAlbum(idAlbum);
 	}
 	
+	/*
 	// Delete a song
 		public void deleteSong(long id_song)
 		{
-			//FacesContext fc = FacesContext.getCurrentInstance();
-			//Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
-			//albumId = Long.valueOf(params.get("albumId")).longValue();
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+			albumId = Long.valueOf(params.get("albumId")).longValue();
 			
-			//albumId = 20;
+			albumId = 20;
 			song.deleteSong(id_song);
 
-			//songsList = song.showSongsByAlbum(albumId);
+			songsList = song.showSongsByAlbum(albumId);
 			this.showAlbumSongs(albumId);
 		}
+		*/
 
 	// Getters & setters	
 	public String getPermission() {
@@ -135,9 +137,5 @@ public class SongManagedBean
 		this.title = title;
 	}
 	
-	
-
-	//TODO: EVERYTHING ELSE
-
 } 
 

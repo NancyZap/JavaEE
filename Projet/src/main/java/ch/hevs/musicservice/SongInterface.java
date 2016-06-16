@@ -19,6 +19,4 @@ public interface SongInterface {
 	public void addSong(Song song, long idAlbum);
 
 	public String addSongWithPerm(Song s, long idAlbum);
-	
-	public void deleteSong(long id_song);
 }

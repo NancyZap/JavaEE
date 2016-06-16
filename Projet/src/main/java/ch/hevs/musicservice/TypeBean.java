@@ -77,23 +77,6 @@ public class TypeBean implements TypeInterface {
 		return false;
 		
 	}
-		
-	@Override
-	public String deleteType(long id_type) {
-
-		if(ctx.isCallerInRole("administrator")){
-			Query query = em.createQuery("SELECT typ FROM Type typ WHERE typ.id=:id");
-			query.setParameter("id", id_type);
-			
-			Type type = (Type) query.getSingleResult();
-			
-			em.remove(type);
-			return "";
-		}else{
-			return "You are not allowed to delete!";
-		}
-		
-	}
 
 	@Override
 	public boolean exist(String description) {
@@ -110,7 +93,7 @@ public class TypeBean implements TypeInterface {
 
 	@Override
 	public List<String> getTypesByAlbum(long albId) {
-		// TODO Auto-generated method stub
+		
 		Query query = em.createQuery("SELECT alb FROM Album alb WHERE alb.id=:id");
 		query.setParameter("id", albId);
 		

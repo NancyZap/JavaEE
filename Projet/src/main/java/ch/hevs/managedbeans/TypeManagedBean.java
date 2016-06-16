@@ -57,13 +57,14 @@ public class TypeManagedBean {
 			permission = type.addTypeToAlbum(t, albId);
 		}
 	}
-	
+	/*
 	// Delete a type
 	public void deleteType(long id_type)
 	{
 		permission= type.deleteType(id_type);
 		typesList = type.getTypes();
 	}
+	*/
 
 
 	//Getters & Setters

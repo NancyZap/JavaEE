@@ -11,9 +11,6 @@ import ch.hevs.businessobject.Song;
 
 @Local
 public interface AlbumInterface {
-	/* Supprimer si plus utilisée
-	List<Album> showAlbumsByArtist(long id_artist);
-	*/
 	
 	Set<Album> showAlbumsByArtist(long id_artist);
 	
@@ -25,10 +22,4 @@ public interface AlbumInterface {
 
 	public String addAlbumWithPerm(Album a, long idArtist);
 
-	
-	//TODO : DELETE METHOD
-	
-	//TODO : UPDATE METHOD
-	
-	//TODO : SHOW ALL ALBUMS ?
 }

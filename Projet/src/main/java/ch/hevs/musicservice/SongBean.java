@@ -28,20 +28,6 @@ public class SongBean implements SongInterface {
 	@PersistenceContext(name = "musicPU", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
-	/* A supprimer si plus utilisée
-	@Override
-	public List<Song> showSongsByAlbum(long id_album) {
-		
-		Query query = em.createQuery("SELECT son FROM Album alb, IN(alb.songs) son where alb.id=:id");
-		query.setParameter("id", id_album);
-		
-		List<Song> listSongsByAlbum = (List<Song>) query.getResultList();
-		
-		return listSongsByAlbum;
-	}
-	
-	*/
-	
 	@Override
 	public Set<Song> showSongsByAlbum(long id_album) {
 		
@@ -82,10 +68,8 @@ public class SongBean implements SongInterface {
 			return "";
 		}else{
 			return "You are not allowed to add a song!";
-		}
-		
+		}		
 	}
-
 
 	@Override
 	public boolean exist(String title) {
@@ -98,16 +82,6 @@ public class SongBean implements SongInterface {
 		catch(Exception e) {
 			return false;
 		}
-	}
-
-	@Override
-	public void deleteSong(long id_song) {
-		Query query = em.createQuery("SELECT son FROM Song son WHERE son.id=:id");
-		query.setParameter("id", id_song);
-		
-		Song song = (Song) query.getSingleResult();
-		
-		em.remove(song);
 	}
 
 }
