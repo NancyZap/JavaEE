@@ -36,6 +36,8 @@ public class AlbumManagedBean
 	private Set<Song> songsList;
 
 	private AlbumInterface album;
+	private String permission;
+
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -91,12 +93,19 @@ public class AlbumManagedBean
 	public void addAlbum(long idArtist) {
 		if(!album.exist(this.title)){
 			Album a = new Album(this.title, this.year);
-			album.addAlbum(a, idArtist);
+			permission = album.addAlbumWithPerm(a, idArtist);
 		}
 		albumsList = album.showAlbumsByArtist(idArtist);
 	}
 
 	// Getters & setters
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
 
 	public String getTitle() {
 		return title;

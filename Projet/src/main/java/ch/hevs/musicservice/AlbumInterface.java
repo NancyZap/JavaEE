@@ -22,6 +22,9 @@ public interface AlbumInterface {
 	public boolean exist(String title);
 
 	public Set<Song> showAlbumSongs(long id_album);
+
+	public String addAlbumWithPerm(Album a, long idArtist);
+
 	
 	//TODO : DELETE METHOD
 	

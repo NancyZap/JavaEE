@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -20,6 +21,7 @@ import ch.hevs.businessobject.Song;
 
 
 @Stateful
+@RolesAllowed(value = {"visitor", "administrator"})
 public class AlbumBean implements AlbumInterface {
 
 	@Resource
@@ -62,7 +64,23 @@ public class AlbumBean implements AlbumInterface {
 		art.addAlbums(album);
 		
 		em.persist(album);
-		
+	}
+	
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public String addAlbumWithPerm(Album album, long idArtist) {
+		if(ctx.isCallerInRole("administrator")){
+			Query query = em.createQuery("SELECT a from Artist a WHERE a.id=:id", Artist.class);	
+			query.setParameter("id", idArtist);
+			
+			Artist art = (Artist) query.getSingleResult();
+			
+			art.addAlbums(album);
+			
+			em.persist(album);
+			return "";	
+		}else{
+			return "You are not allowed to add an album!";
+		}
 		
 	}
 

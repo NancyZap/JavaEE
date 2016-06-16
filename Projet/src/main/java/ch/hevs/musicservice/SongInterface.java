@@ -17,6 +17,8 @@ public interface SongInterface {
 	public boolean exist(String title);
 	
 	public void addSong(Song song, long idAlbum);
+
+	public String addSongWithPerm(Song s, long idAlbum);
 	
 	//TODO: EVERYTHING ELSE
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -19,6 +20,7 @@ import ch.hevs.businessobject.Album;
 import ch.hevs.businessobject.Song;
 
 @Stateful
+@RolesAllowed(value = {"visitor", "administrator"})
 public class SongBean implements SongInterface {
 
 	@Resource
@@ -65,6 +67,25 @@ public class SongBean implements SongInterface {
 		em.persist(song);
 		
 	}
+	
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public String addSongWithPerm(Song song, long idAlbum) {
+		if(ctx.isCallerInRole("administrator")){
+			Query query = em.createQuery("SELECT a FROM Album a WHERE a.id=:id", Album.class);
+			query.setParameter("id", idAlbum);
+		
+			Album alb = (Album) query.getSingleResult();
+		
+			alb.addSongs(song);
+		
+			em.persist(song);
+			return "";
+		}else{
+			return "You are not allowed to add a song!";
+		}
+		
+	}
+
 
 	@Override
 	public boolean exist(String title) {

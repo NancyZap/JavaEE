@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -22,6 +23,7 @@ import ch.hevs.businessobject.Type;
 import ch.hevs.exception.MusicException;
 
 @Stateful
+@RolesAllowed(value = {"visitor", "administrator"})
 public class TypeBean implements TypeInterface {
 
 	@Resource
@@ -42,13 +44,19 @@ public class TypeBean implements TypeInterface {
 	}
 	
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
-	public void addTypeToAlbum(Type type, long albId){
-		Query query = em.createQuery("SELECT alb from Album alb WHERE alb.id=:id", Album.class);	
-		query.setParameter("id", albId);
+	public String addTypeToAlbum(Type type, long albId){
 		
-		Album alb = (Album) query.getSingleResult();
-		
-		alb.addTypes(type);
+		if(ctx.isCallerInRole("administrator")){
+			Query query = em.createQuery("SELECT alb from Album alb WHERE alb.id=:id", Album.class);	
+			query.setParameter("id", albId);
+			
+			Album alb = (Album) query.getSingleResult();
+			
+			alb.addTypes(type);
+			return "";
+		}else{
+			return "You are not allowed to add a type!";
+		}
 		
 	}
 	
@@ -72,14 +80,19 @@ public class TypeBean implements TypeInterface {
 	}
 		
 	@Override
-	public void deleteType(long id_type) {
+	public String deleteType(long id_type) {
 
-		Query query = em.createQuery("SELECT typ FROM Type typ WHERE typ.id=:id");
-		query.setParameter("id", id_type);
-		
-		Type type = (Type) query.getSingleResult();
-		
-		em.remove(type);
+		if(ctx.isCallerInRole("administrator")){
+			Query query = em.createQuery("SELECT typ FROM Type typ WHERE typ.id=:id");
+			query.setParameter("id", id_type);
+			
+			Type type = (Type) query.getSingleResult();
+			
+			em.remove(type);
+			return "";
+		}else{
+			return "You are not allowed to delete!";
+		}
 		
 	}
 

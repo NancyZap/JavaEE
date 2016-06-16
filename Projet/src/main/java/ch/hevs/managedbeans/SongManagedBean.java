@@ -32,6 +32,9 @@ public class SongManagedBean
 	
 	private Set<Song> songsList;
 	private SongInterface song;
+	
+	private String permission;
+
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -64,12 +67,20 @@ public class SongManagedBean
 	public void addSong(long idAlbum) {
 		if(!song.exist(this.title)){
 			Song s = new Song(this.title);
-			song.addSong(s, idAlbum);
+			permission = song.addSongWithPerm(s, idAlbum);
 		}
 		songsList = song.showSongsByAlbum(idAlbum);
 	}
 
 	// Getters & setters	
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
+
 	public Set<Song> getSongsList() {
 		return songsList;
 	}

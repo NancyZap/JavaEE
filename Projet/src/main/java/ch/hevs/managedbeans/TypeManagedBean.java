@@ -20,7 +20,8 @@ public class TypeManagedBean {
 	private List<String> typeDescriptions;
 	private String typeDescription;
 	private TypeInterface type;
-	
+	private String permission;
+
 	@PostConstruct
 	public void initialize() throws NamingException {
 		
@@ -53,19 +54,28 @@ public class TypeManagedBean {
 	public void addTypeToAlbum(long albId){
 		Type t = new Type(this.typeDescription);
 		if(!type.existInAlbum(t, albId)){
-			type.addTypeToAlbum(t, albId);
+			permission = type.addTypeToAlbum(t, albId);
 		}
 	}
 	
 	// Delete a type
 	public void deleteType(long id_type)
 	{
-		type.deleteType(id_type);
+		permission= type.deleteType(id_type);
 		typesList = type.getTypes();
 	}
 
 
 	//Getters & Setters
+	
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
+
 	public List<Type> getTypesList() {
 		return typesList;
 	}
