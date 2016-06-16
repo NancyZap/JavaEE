@@ -52,8 +52,9 @@ public class TypeManagedBean {
 	
 	public void addTypeToAlbum(long albId){
 		Type t = new Type(this.typeDescription);
-		//if(!type.existInAlbum(t, albId)){
+		if(!type.existInAlbum(t, albId)){
 			type.addTypeToAlbum(t, albId);
+		}
 	}
 	
 	// Delete a type
