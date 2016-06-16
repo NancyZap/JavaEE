@@ -10,10 +10,20 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h1 class="text-center">
-				<h:outputLabel value="My artists"></h:outputLabel>
-			</h1>
-			<br></br>
+
+			<table>
+				<tr>
+					<td>
+						<!-- Icon made by Freepik from www.flaticon.com  --> <img
+						src="img/multiple-users-silhouette.png" height="64" width="64" />
+					</td>
+					<td>
+						<h1>
+							<h:outputLabel value="Artists"></h:outputLabel>
+						</h1>
+					</td>
+				</tr>
+			</table>
 		</h:form>
 
 		<div class="container">
@@ -22,7 +32,7 @@
 					value="#{artistManagedBean.artists}" var="a">
 
 					<h:column>
-						<f:facet name="header">Artists</f:facet>
+						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{a.name}" />
 					</h:column>
 
